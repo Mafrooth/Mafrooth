@@ -1,177 +1,367 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta name="google-site-verification" content="nJaurKAfj1-qFpczkD5WEOVVku7lPCqYszqUwnRQ2_8" />
-</head>
-<body>
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <h1>✈️ TARGET TRAVEL AGENCY</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html" class="active">Services</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mohamed Mafrooth | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0f0f1e;
+        --surface: rgba(255, 255, 255, 0.05);
+        --text: #e5edf9;
+        --muted: #a0aec0;
+        --accent: #06b6d4;
+        --border: rgba(255, 255, 255, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 60px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .header-text h1 {
+        font-size: 2.8rem;
+        font-weight: 800;
+        margin-bottom: 8px;
+        background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .header-text p {
+        font-size: 1.1rem;
+        color: var(--muted);
+        font-weight: 500;
+      }
+
+      .profile-img {
+        width: 200px;
+        height: 200px;
+        border-radius: 16px;
+        object-fit: cover;
+        border: 2px solid var(--accent);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      section {
+        margin-bottom: 50px;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: #f5f7fb;
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 12px;
+        display: inline-block;
+      }
+
+      .about-text {
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.8;
+        max-width: 800px;
+      }
+
+      .projects-grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .project-card {
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--accent);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .project-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+        color: #f5f7fb;
+      }
+
+      .project-card .status {
+        display: inline-block;
+        font-size: 0.85rem;
+        color: var(--accent);
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      .project-card p {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+      }
+
+      .skill-category h3 {
+        font-size: 1.05rem;
+        margin-bottom: 12px;
+        color: #f5f7fb;
+      }
+
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .skill-tag {
+        display: inline-block;
+        padding: 8px 14px;
+        background: rgba(6, 182, 212, 0.15);
+        border: 1px solid rgba(6, 182, 212, 0.3);
+        border-radius: 20px;
+        font-size: 0.9rem;
+        color: #c7f0d8;
+      }
+
+      .ai-tools {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .tool-card {
+        padding: 20px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .tool-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 8px;
+        color: #f5f7fb;
+      }
+
+      .tool-card p {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .contact-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+      }
+
+      .contact-item {
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
+
+      .contact-item label {
+        display: block;
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+
+      .contact-item a,
+      .contact-item p {
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 500;
+        word-break: break-all;
+      }
+
+      .contact-item a:hover {
+        color: var(--accent);
+      }
+
+      footer {
+        margin-top: 60px;
+        padding-top: 30px;
+        border-top: 1px solid var(--border);
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .header-text h1 {
+          font-size: 2rem;
+        }
+
+        .profile-img {
+          width: 150px;
+          height: 150px;
+        }
+
+        .skills-container,
+        .ai-tools {
+          grid-template-columns: 1fr;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="header-text">
+          <h1>Mohamed Mafrooth</h1>
+          <p>Web Developer by Using AI</p>
         </div>
-    </nav>
+        <img src="MAFROOTH.jpg" alt="Mohamed Mafrooth" class="profile-img" />
+      </header>
 
-    <!-- PAGE HEADER -->
-    <section class="page-header">
-        <h1>Our Services</h1>
-        <p>Everything you need for a perfect journey</p>
-    </section>
+      <section id="about">
+        <h2>About Me</h2>
+        <p class="about-text">
+          Creative web developer and designer focused on building beautiful,
+          responsive, and user-friendly digital experiences. Experienced with
+          modern web technologies and passionate about creating pixel-perfect
+          interfaces. Currently working on projects that combine clean code with
+          stunning visual design.
+        </p>
+      </section>
 
-    <!-- SERVICES DETAIL -->
-    <section class="services-detail">
-        <div class="container">
-            <!-- Service 1: Flight Tickets -->
-            <div class="service-detail-card">
-                <div class="service-detail-icon">🎫</div>
-                <h2>Flight Tickets</h2>
-                <p class="service-description">
-                    We provide access to a wide range of domestic and international flights at the most competitive prices. 
-                    Our team helps you find the perfect flight that matches your schedule and budget.
-                </p>
-                <div class="service-features">
-                    <h4>Features:</h4>
-                    <ul>
-                        <li>✓ Best price guarantee</li>
-                        <li>✓ Multiple airline options</li>
-                        <li>✓ Easy booking process</li>
-                        <li>✓ 24/7 customer support</li>
-                        <li>✓ Flexible date changes</li>
-                        <li>✓ Instant confirmation</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Service 2: Passport Services -->
-            <div class="service-detail-card">
-                <div class="service-detail-icon">📘</div>
-                <h2>Passport Services</h2>
-                <p class="service-description">
-                    Get expert assistance with your passport application, renewal, and documentation. 
-                    We guide you through the entire process to ensure quick and hassle-free processing.
-                </p>
-                <div class="service-features">
-                    <h4>Features:</h4>
-                    <ul>
-                        <li>✓ Fresh passport applications</li>
-                        <li>✓ Passport renewal assistance</li>
-                        <li>✓ Lost passport replacement</li>
-                        <li>✓ Document verification help</li>
-                        <li>✓ Fast-track processing</li>
-                        <li>✓ Complete documentation support</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Service 3: Visa Services -->
-            <div class="service-detail-card">
-                <div class="service-detail-icon">🛂</div>
-                <h2>Visa Services</h2>
-                <p class="service-description">
-                    Navigate the complex visa process with our expert consultants. 
-                    We assist with visa applications for numerous countries worldwide.
-                </p>
-                <div class="service-features">
-                    <h4>Our Expertise:</h4>
-                    <ul>
-                        <li>✓ Schengen visa assistance</li>
-                        <li>✓ UK visa consultation</li>
-                        <li>✓ USA visa application support</li>
-                        <li>✓ Australia, Canada visa help</li>
-                        <li>✓ Asian visa processing</li>
-                        <li>✓ Interview preparation</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Service 4: Medical Appointments -->
-            <div class="service-detail-card">
-                <div class="service-detail-icon">🏥</div>
-                <h2>Medical Appointments</h2>
-                <p class="service-description">
-                    We arrange medical check-ups and vaccinations required before traveling. 
-                    Ensure your health is in perfect condition before your trip.
-                </p>
-                <div class="service-features">
-                    <h4>Medical Services:</h4>
-                    <ul>
-                        <li>✓ General health check-up</li>
-                        <li>✓ Required vaccinations</li>
-                        <li>✓ Medical certificates</li>
-                        <li>✓ Fitness for travel assessment</li>
-                        <li>✓ Prescription assistance</li>
-                        <li>✓ Partner clinic network</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Service 5: Travel Insurance -->
-            <div class="service-detail-card">
-                <div class="service-detail-icon">🛡️</div>
-                <h2>Travel Insurance</h2>
-                <p class="service-description">
-                    Protect yourself with comprehensive travel insurance covering emergencies, 
-                    cancellations, and unforeseen circumstances during your journey.
-                </p>
-                <div class="service-features">
-                    <h4>Coverage Includes:</h4>
-                    <ul>
-                        <li>✓ Medical emergency coverage</li>
-                        <li>✓ Trip cancellation protection</li>
-                        <li>✓ Baggage loss/delay coverage</li>
-                        <li>✓ Travel delay compensation</li>
-                        <li>✓ Personal liability</li>
-                        <li>✓ 24/7 claims support</li>
-                    </ul>
-                </div>
-            </div>
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <span class="status">Portfolio Website</span>
+            <h3>Modern Portfolio Showcase</h3>
+            <p>
+              A fully responsive portfolio website with dark theme,
+              glassmorphism design, and smooth animations. Built with HTML5,
+              CSS3, and JavaScript to showcase creative work with professional
+              layouts and intuitive navigation.
+            </p>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- CTA SECTION -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Ready to Start Your Journey?</h2>
-            <p>Contact us today for a personalized travel package</p>
-            <a href="contact.html" class="cta-btn">Get in Touch</a>
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-container">
+          <div class="skill-category">
+            <h3>Frontend</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3>Tools</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">GitHub</span>
+              <span class="skill-tag">VS Code</span>
+            </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>TARGET TRAVEL AGENCY</h4>
-                    <p>Your trusted partner for all travel needs.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p>📍 KARAIKAL</p>
-                    <p>📞 +91 8610293447</p>
-                    <p>👤 Mohamed Ashique</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 TARGET TRAVEL AGENCY. All rights reserved.</p>
-            </div>
+      <section id="ai-tools">
+        <h2>AI Tools I Use</h2>
+        <div class="ai-tools">
+          <div class="tool-card">
+            <h3>ChatGPT</h3>
+            <p>
+              Learning coding concepts and solving development problems faster.
+            </p>
+          </div>
+          <div class="tool-card">
+            <h3>Blackbox AI</h3>
+            <p>
+              Generates code snippets and helps understand complex programming
+              patterns.
+            </p>
+          </div>
+          <div class="tool-card">
+            <h3>GitHub Copilot</h3>
+            <p>
+              Assists with intelligent code completion and development
+              productivity.
+            </p>
+          </div>
         </div>
-    </footer>
-</body>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-info">
+          <div class="contact-item">
+            <label>Email</label>
+            <a href="m.mohamedmafrooth@gmail.com">m.mohamedmafrooth@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <label>Phone</label>
+            <p>+91 7845379034</p>
+          </div>
+          <div class="contact-item">
+            <label>Location</label>
+            <p>Karaikal, India</p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>&copy; 2026 Mohamed Mafrooth. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
 </html>
