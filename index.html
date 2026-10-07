@@ -1,413 +1,755 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Java Lab Record</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Java Lab Experiments</title>
 <style>
-:root{--bg:#f2f5f3;--panel:#fff;--ink:#14213d;--mute:#5b6577;--line:#cdd6d1;--accent:#0f766e;--mark:#ffe36e;--code-bg:#14213d;--code-fg:#e6edf3;--term-bg:#0c0f14;--term-fg:#b8f2c8;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1720;--panel:#16212d;--ink:#e8eef5;--mute:#93a1b3;--line:#2a3a4a;--accent:#4fd1c5;--mark:#5b4b00;--code-bg:#0b121a;--term-bg:#05070a}}
-:root[data-theme="dark"]{--bg:#0f1720;--panel:#16212d;--ink:#e8eef5;--mute:#93a1b3;--line:#2a3a4a;--accent:#4fd1c5;--mark:#5b4b00;--code-bg:#0b121a;--term-bg:#05070a}
-html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;
-background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:28px 28px;background-attachment:fixed}
-body::before{content:"";position:fixed;inset:0;background:var(--bg);opacity:.86;z-index:-1}
-.wrap{display:grid;grid-template-columns:260px minmax(0,1fr);max-width:1180px;margin:0 auto;gap:40px;padding:32px 24px 80px}
-nav{position:sticky;top:24px;align-self:start}
-nav h2{font:700 22px Fraunces,serif;margin:0 0 4px}
-nav p{color:var(--mute);font-size:14px;margin:0 0 18px}
-nav ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
-nav a{display:block;padding:7px 14px;color:var(--ink);text-decoration:none;font-size:15px;margin-left:-2px;border-left:2px solid transparent}
-nav a:hover,nav a:focus-visible{border-left-color:var(--accent);background:var(--panel);outline:none}
-nav a span{color:var(--mute);font:500 13px 'JetBrains Mono',monospace;margin-right:8px}
-header.hero{margin-bottom:36px}
-.hero h1{font:700 clamp(40px,7vw,76px)/1 Fraunces,serif;letter-spacing:-.02em;margin:0 0 14px}
-.hero h1 mark{background:var(--mark);color:inherit;padding:0 .12em}
-.hero p{max-width:60ch;color:var(--mute);margin:0 0 16px;font-size:18px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips span{border:1px solid var(--line);background:var(--panel);padding:3px 12px;border-radius:99px;font:500 13px 'JetBrains Mono',monospace}
-section.exp{background:var(--panel);border:1px solid var(--line);border-radius:6px;margin-bottom:28px;overflow:hidden}
-.exp>.head{padding:22px 26px 6px}
-.exp h3{font:700 28px/1.15 Fraunces,serif;margin:0 0 6px}
-.exp .aim{color:var(--mute);margin:0 0 14px;max-width:68ch}
-.tabs{display:flex;gap:4px;padding:0 26px;border-bottom:1px solid var(--line);flex-wrap:wrap}
-.tabs button{font:500 14px Inter,sans-serif;background:none;border:0;border-bottom:3px solid transparent;color:var(--mute);padding:10px 12px;cursor:pointer}
-.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent)}
-.tabs button:focus-visible,.copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.pane{padding:20px 26px 26px}
-.file{margin:0 0 16px}
-.file .fn{display:flex;justify-content:space-between;align-items:center;background:var(--code-bg);color:#9fb0c3;padding:6px 14px;font:500 13px 'JetBrains Mono',monospace;border-radius:4px 4px 0 0}
-.copy{background:none;border:1px solid #3b4d63;color:#cfe0f2;border-radius:4px;font:500 12px Inter,sans-serif;padding:2px 10px;cursor:pointer}
-pre{margin:0;overflow-x:auto;font:400 13.5px/1.6 'JetBrains Mono',monospace;padding:14px;tab-size:2}
-pre.code{background:var(--code-bg);color:var(--code-fg);border-radius:0 0 4px 4px}
-pre.term{background:var(--term-bg);color:var(--term-fg);border-radius:4px;border:1px solid #1f2933}
-.note{border-left:4px solid var(--mark);background:color-mix(in srgb,var(--mark) 30%,transparent);padding:8px 14px;margin:0 0 14px;font-size:14px}
-.out-title{font:700 15px Fraunces,serif;margin:0 0 8px}
-footer{color:var(--mute);font-size:14px;text-align:center;margin-top:30px}
-@media(max-width:820px){.wrap{grid-template-columns:1fr;gap:20px;padding:20px 14px 60px}nav{position:static}nav ol{display:flex;overflow-x:auto;border-left:0;border-bottom:2px solid var(--line)}nav a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;margin:0 0 -2px}.exp>.head,.pane{padding-left:16px;padding-right:16px}.tabs{padding:0 12px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+        font-family:Arial,Helvetica,sans-serif;
+        background:#f4f7fb;
+        color:#1f2937;
+        line-height:1.6;
+    }
+    header{
+        background:linear-gradient(135deg,#172554,#2563eb);
+        color:white;
+        padding:55px 20px;
+        text-align:center;
+    }
+    header h1{font-size:42px;margin-bottom:10px}
+    header p{font-size:18px;opacity:.92}
+    nav{
+        position:sticky;
+        top:0;
+        z-index:10;
+        background:#0f172a;
+        padding:12px;
+        text-align:center;
+        box-shadow:0 2px 10px #0002;
+    }
+    nav a{
+        color:white;
+        text-decoration:none;
+        display:inline-block;
+        padding:8px 13px;
+        margin:3px;
+        border-radius:6px;
+        font-size:14px;
+    }
+    nav a:hover{background:#2563eb}
+    .container{width:min(1100px,92%);margin:35px auto}
+    .intro{
+        background:white;
+        padding:25px;
+        border-radius:14px;
+        box-shadow:0 5px 20px #00000012;
+        margin-bottom:25px;
+    }
+    .intro h2{color:#1d4ed8;margin-bottom:8px}
+    .grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+        gap:18px;
+    }
+    .card{
+        background:white;
+        padding:22px;
+        border-radius:14px;
+        border-left:5px solid #2563eb;
+        box-shadow:0 5px 18px #00000010;
+        transition:.25s;
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:0 9px 25px #00000018}
+    .card h3{color:#1d4ed8;margin-bottom:8px}
+    .card a{color:#2563eb;font-weight:bold;text-decoration:none}
+    section.experiment{
+        background:white;
+        margin:30px 0;
+        padding:28px;
+        border-radius:16px;
+        box-shadow:0 5px 20px #00000012;
+        scroll-margin-top:75px;
+    }
+    .number{
+        display:inline-block;
+        background:#2563eb;
+        color:white;
+        padding:4px 10px;
+        border-radius:20px;
+        font-size:13px;
+        margin-bottom:8px;
+    }
+    section h2{color:#172554;margin-bottom:8px}
+    section h3{margin:20px 0 8px;color:#334155}
+    pre{
+        background:#0b1220;
+        color:#e5e7eb;
+        padding:18px;
+        border-radius:10px;
+        overflow-x:auto;
+        font-size:14px;
+        line-height:1.5;
+    }
+    code{font-family:Consolas,Monaco,monospace}
+    .note{
+        background:#eff6ff;
+        border-left:4px solid #2563eb;
+        padding:12px 15px;
+        margin:15px 0;
+        border-radius:6px;
+    }
+    footer{
+        background:#0f172a;
+        color:white;
+        text-align:center;
+        padding:25px;
+        margin-top:40px;
+    }
+    .top{
+        display:inline-block;
+        margin-top:10px;
+        color:#93c5fd;
+        text-decoration:none;
+    }
+    @media(max-width:600px){
+        header h1{font-size:30px}
+        section.experiment{padding:20px}
+        pre{font-size:12px}
+    }
 </style>
 </head>
-<body>
-<div class="wrap">
-<nav aria-label="Contents">
-<h2>Contents</h2><p>8 experiments</p>
-<ol id="toc"></ol>
-</nav>
-<main>
-<header class="hero">
-<h1>Java <mark>lab</mark> record</h1>
-<p>Eight programs covering servlets, exceptions, JDBC, AWT applets, JSP, sockets and RMI. Each one has its source code and sample output.</p>
-<div class="chips"><span>Servlet</span><span>JDBC</span><span>Applet</span><span>JSP</span><span>Socket</span><span>RMI</span></div>
+
+<body id="top">
+
+<header>
+    <h1>Java Lab Experiments</h1>
+    <p>Java Programming Laboratory – Experiment Record</p>
 </header>
-<div id="list"></div>
-<footer>Java Lab Record</footer>
-</main>
-</div>
-<script>
-var E=[
-{id:"welcome",t:"Welcome message",aim:"A servlet that answers a GET request with a welcome page.",
-files:[["NewServlet.java",`import java.io.*;
-import javax.servlet.*;
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#exp1">1. Welcome</a>
+    <a href="#exp2">2. Exception</a>
+    <a href="#exp3">3. JDBC</a>
+    <a href="#exp4">4. Color</a>
+    <a href="#exp5">5. Session</a>
+    <a href="#exp6">6. RMI</a>
+    <a href="#exp7">7. Calculator</a>
+    <a href="#exp8">8. Socket</a>
+</nav>
+
+<main class="container" id="home">
+
+    <div class="intro">
+        <h2>Java Lab Record</h2>
+        <p>
+            This website presents the Java laboratory experiments from the supplied
+            lab record. Select an experiment below to view its title and source code.
+        </p>
+    </div>
+
+    <div class="grid">
+        <div class="card"><h3>01. Welcome Message</h3><p>Servlet program for displaying a welcome message.</p><a href="#exp1">View Experiment →</a></div>
+        <div class="card"><h3>02. Exception Handling</h3><p>Demonstrates common Java exceptions.</p><a href="#exp2">View Experiment →</a></div>
+        <div class="card"><h3>03. JDBC</h3><p>Connects Java with a MySQL database.</p><a href="#exp3">View Experiment →</a></div>
+        <div class="card"><h3>04. Color Palette</h3><p>Java Applet color and image selection program.</p><a href="#exp4">View Experiment →</a></div>
+        <div class="card"><h3>05. Session Object</h3><p>Student registration JSP example.</p><a href="#exp5">View Experiment →</a></div>
+        <div class="card"><h3>06. Client Server / RMI</h3><p>Client and server socket communication example.</p><a href="#exp6">View Experiment →</a></div>
+        <div class="card"><h3>07. Calculator</h3><p>Applet calculator for arithmetic operations.</p><a href="#exp7">View Experiment →</a></div>
+        <div class="card"><h3>08. Socket Programming</h3><p>RMI addition client, interface and server.</p><a href="#exp8">View Experiment →</a></div>
+    </div>
+
+    <section class="experiment" id="exp1">
+        <span class="number">Experiment 1</span>
+        <h2>Welcome Message</h2>
+        <h3>NewServlet.java</h3>
+<pre><code>import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = {"/NewServlet"})
 public class NewServlet extends HttpServlet {
-  protected void processRequest(HttpServletRequest request,
-      HttpServletResponse response) throws ServletException, IOException {
-    response.setContentType("text/html;charset=UTF-8");
-    try (PrintWriter out = response.getWriter()) {
-      out.println("<!DOCTYPE html>");
-      out.println("<html><head>");
-      out.println("<title>Servlet NewServlet</title>");
-      out.println("</head><body>");
-      out.println("<h1>Servlet NewServlet at " + request.getContextPath()
-          + " welcome to this page</h1>");
-      out.println("</body></html>");
+
+    protected void processRequest(HttpServletRequest request,
+            HttpServletResponse response)
+            throws ServletException, IOException {
+
+        response.setContentType("text/html;charset=UTF-8");
+
+        try (PrintWriter out = response.getWriter()) {
+            out.println("&lt;!DOCTYPE html&gt;");
+            out.println("&lt;html&gt;");
+            out.println("&lt;head&gt;");
+            out.println("&lt;title&gt;Servlet NewServlet&lt;/title&gt;");
+            out.println("&lt;/head&gt;");
+            out.println("&lt;body&gt;");
+            out.println("&lt;h1&gt;Servlet NewServlet at "
+                    + request.getContextPath()
+                    + " welcome to this page&lt;/h1&gt;");
+            out.println("&lt;/body&gt;");
+            out.println("&lt;/html&gt;");
+        }
     }
-  }
-  @Override
-  protected void doGet(HttpServletRequest request,
-      HttpServletResponse response) throws ServletException, IOException {
-    processRequest(request, response);
-  }
-}`]],out:"URL: http://localhost:8080/WebApplication1/NewServlet\n\nServlet NewServlet at /WebApplication1 welcome"},
-{id:"exceptions",t:"Exception handling",aim:"A menu-driven program that triggers five common exceptions and catches each one.",
-note:"The switch cases have no break statements, so each option also runs the cases below it. Add break after each case to run only the chosen one.",
-files:[["ex.java",`import java.io.*;
+
+    @Override
+    protected void doGet(HttpServletRequest request,
+            HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+}</code></pre>
+    </section>
+
+    <section class="experiment" id="exp2">
+        <span class="number">Experiment 2</span>
+        <h2>Exception Handling</h2>
+<pre><code>import java.io.*;
 
 class ex {
-  public static void main(String args[]) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    int op;
-    do {
-      System.out.println("Enter your option\\n");
-      System.out.println("1.Arithmetic Exception");
-      System.out.println("2.StringIndexOutOfBound Exception");
-      System.out.println("3.FileNotFound Exception");
-      System.out.println("4.NumberFormat Exception");
-      System.out.println("5.ArrayIndexOutOfBounds Exception");
-      op = Integer.parseInt(br.readLine());
-      switch (op) {
-        case 1:
-          try { int a = 30, b = 0; int c = a / b; }
-          catch (ArithmeticException e) {
-            System.out.println("Can't divide a number by 0"); }
-        case 2:
-          try { String a = "This is like chipping "; char c = a.charAt(24); }
-          catch (StringIndexOutOfBoundsException e) {
-            System.out.println("StringIndexOutOfBoundsException"); }
-        case 3:
-          try { FileReader fr = new FileReader(new File("E://file.txt")); }
-          catch (FileNotFoundException e) {
-            System.out.println("File does not exist"); }
-        case 4:
-          try { int num = Integer.parseInt("akki"); }
-          catch (NumberFormatException e) {
-            System.out.println("Number format exception"); }
-        case 5:
-          try { int a[] = new int[5]; a[6] = 9; }
-          catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Array Index is Out Of Bounds"); }
-      }
-    } while (op <= 5);
-  }
-}`]],out:"Enter your option\n1.Arithmetic Exception\n2.StringIndexOutOfBound Exception\n3.FileNotFound Exception\n4.NumberFormat Exception\n5.ArrayIndexOutOfBounds Exception\n1\nCan't divide a number by 0\nStringIndexOutOfBoundsException\nFile does not exist\nNumber format exception\nArray Index is Out Of Bounds"},
-{id:"jdbc",t:"Database connection using JDBC",aim:"Connect to a MySQL database and print every row of a table.",
-files:[["odbcjava.java",`import java.sql.*;
+    public static void main(String args[]) throws IOException {
+
+        InputStreamReader r = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(r);
+
+        int op;
+        do {
+            System.out.println("Enter your option");
+            System.out.println("1.Arithmetic Exception");
+            System.out.println("2.StringIndexOutOfBound Exception");
+            System.out.println("3.FileNotFound Exception");
+            System.out.println("4.NumberFormat Exception");
+            System.out.println("5.ArrayIndexOutOfBounds Exception");
+
+            op = Integer.parseInt(br.readLine());
+
+            switch(op) {
+                case 1:
+                    try {
+                        int a = 30, b = 0;
+                        int c = a / b;
+                        System.out.println("Result = " + c);
+                    } catch(ArithmeticException e) {
+                        System.out.println("Can't divide a number by 0");
+                    }
+                    break;
+
+                case 2:
+                    try {
+                        String a = "This is like chipping ";
+                        char c = a.charAt(24);
+                        System.out.println(c);
+                    } catch(StringIndexOutOfBoundsException e) {
+                        System.out.println("StringIndexOutOfBoundsException");
+                    }
+                    break;
+
+                case 3:
+                    try {
+                        File file = new File("E://file.txt");
+                        FileReader fr = new FileReader(file);
+                    } catch(FileNotFoundException e) {
+                        System.out.println("File does not exist");
+                    }
+                    break;
+
+                case 4:
+                    try {
+                        int num = Integer.parseInt("akki");
+                        System.out.println(num);
+                    } catch(NumberFormatException e) {
+                        System.out.println("Number format exception");
+                    }
+                    break;
+
+                case 5:
+                    try {
+                        int a[] = new int[5];
+                        a[6] = 9;
+                    } catch(ArrayIndexOutOfBoundsException e) {
+                        System.out.println("Array Index is Out Of Bounds");
+                    }
+                    break;
+            }
+        } while(op <= 5);
+    }
+}</code></pre>
+    </section>
+
+    <section class="experiment" id="exp3">
+        <span class="number">Experiment 3</span>
+        <h2>Database Connection Using JDBC</h2>
+<pre><code>import java.sql.*;
 
 public class odbcjava {
-  public static void main(String[] args) {
-    try {
-      Class.forName("com.mysql.jdbc.Driver");
-      Connection con = DriverManager.getConnection(
-          "jdbc:mysql://localhost:3306/kk", "root", "");
-      Statement st = con.createStatement();
-      ResultSet rs = st.executeQuery("select * from kk");
-      while (rs.next())
-        System.out.println(rs.getInt(1) + "" + rs.getString(2));
-      con.close();
-    } catch (Exception e) {
-      System.out.println(e);
+    public static void main(String[] args) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+
+            Connection con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/kk", "root", "");
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select * from kk");
+
+            while(rs.next())
+                System.out.println(rs.getInt(1) + "" + rs.getString(2));
+
+            con.close();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
     }
-  }
-}`]],out:"mysql> select * from kk;\n+--------+------------+\n| rollno | name       |\n+--------+------------+\n|   1002 | jayakandan |\n|   1004 | muruga     |\n+--------+------------+\n2 rows in set\n\nNetBeans output:\n1002jayakandan\n1004muruga\nBUILD SUCCESSFUL"},
-{id:"palette",t:"Color palette",aim:"An applet where buttons recolor the foreground or background of a text area, with a choice of two campus images.",
-files:[["ColorPalette.java",`import java.awt.*;
+}</code></pre>
+    </section>
+
+    <section class="experiment" id="exp4">
+        <span class="number">Experiment 4</span>
+        <h2>Color Palette</h2>
+<pre><code>import java.awt.*;
 import java.awt.event.*;
 import java.applet.*;
-/*
-<applet code="ColorPalette" width=500 height=500>
-<param name="recmb" value="recmb.jpg">
-<param name="recwsb" value="recwsb.jpg">
-</applet>
-*/
-public class ColorPalette extends Applet
-    implements ActionListener, ItemListener {
-  Button btnRed, btnGreen, btnBlue;
-  String str = "";
-  CheckboxGroup cbgColor, cbgImage;
-  Checkbox optFore, optBack, optMb, optWsb;
-  Image imgMb, imgWsb;
-  TextArea txtaComments = new TextArea("", 5, 30);
 
-  public void init() {
-    setLayout(new GridLayout(4, 3));
-    cbgColor = new CheckboxGroup();
-    cbgImage = new CheckboxGroup();
-    optFore = new Checkbox("Foreground", cbgColor, true);
-    optBack = new Checkbox("Background", cbgColor, false);
-    optMb = new Checkbox("REC-Main Block", cbgImage, true);
-    optWsb = new Checkbox("REC-Workshop Block", cbgImage, false);
-    btnRed = new Button("Red");
-    btnGreen = new Button("Green");
-    btnBlue = new Button("Blue");
-    imgMb = getImage(getDocumentBase(), getParameter("recmb"));
-    imgWsb = getImage(getDocumentBase(), getParameter("recwsb"));
-    add(btnRed); add(btnGreen); add(btnBlue);
-    add(new Label("Select the Area :")); add(optFore); add(optBack);
-    add(new Label("Select the Image :")); add(optMb); add(optWsb);
-    add(txtaComments);
-    optFore.addItemListener(this); optBack.addItemListener(this);
-    optMb.addItemListener(this);   optWsb.addItemListener(this);
-    btnRed.addActionListener(this);
-    btnGreen.addActionListener(this);
-    btnBlue.addActionListener(this);
-  }
-  public void actionPerformed(ActionEvent ae) {
-    str = cbgColor.getSelectedCheckbox().getLabel();
-    Color c = ae.getSource() == btnRed ? Color.red
-            : ae.getSource() == btnGreen ? Color.green : Color.blue;
-    if (str.equals("Background")) txtaComments.setBackground(c);
-    else txtaComments.setForeground(c);
-  }
-  public void itemStateChanged(ItemEvent ie) { repaint(); }
-  public void paint(Graphics g) {
-    if (optMb.getState())  g.drawImage(imgMb, 200, 400, this);
-    if (optWsb.getState()) g.drawImage(imgWsb, 200, 400, this);
-  }
-}`]],note:"The actionPerformed method is condensed here: the original used six separate if statements with the same effect.",out:"Applet Viewer: ColorPalette\n[Red] [Green] [Blue]\nSelect the Area  : (o) Foreground  ( ) Background\nSelect the Image : (o) REC-Main Block  ( ) REC-Workshop Block\n[ text area shown in blue ]\nApplet started."},
-{id:"session",t:"Session object",aim:"Two JSP pages: a registration form that posts first and last name, then a second form that adds a country dropdown.",
-files:[["Student-reg.jsp",`<html>
-<head><title>Student Registration Form</title></head>
-<body>
-<form action="second.jsp" method="post">
-  First name: <input type="text" name="firstName" />
-  <br/><br/>
-  Last name: <input type="text" name="lastName" />
-  <br/><br/>
-  <input type="submit" value="Submit" />
-</form>
-</body>
-</html>`],["second.jsp",`<html>
-<head><title>Student Registration Form</title></head>
-<body>
-<form action="student-dropdown-response.jsp">
-  First name: <input type="text" name="firstName" />
-  <br/><br/>
-  Last name: <input type="text" name="lastName" />
-  <br/><br/>
-  <select name="country">
-    <option>Brazil</option>
-    <option>France</option>
-    <option>Germany</option>
-    <option>India</option>
-    <option>Turkey</option>
-    <option>United Kingdom</option>
-    <option>United States of America</option>
-  </select>
-  <br/><br/>
-  <input type="submit" value="Submit" />
-</form>
-</body>
-</html>`]],out:"localhost:28051/DROGAN/first.jsp\nFirst name: Javin\nLast name:  Tony\n[Submit]\n\nlocalhost:28051/DROGAN/second1.jsp\n- First Name: Javin\n- Last Name: Tony"},
-{id:"socket",t:"Client-server application (sockets)",aim:"A TCP client sends typed lines to a server, which prints them until the client sends \"Over\".",
-note:"In the PDF this program is filed under \"Client server application using RMI\", but the code uses plain sockets. The RMI program is experiment 8.",
-files:[["Client.java",`import java.net.*;
+public class ColorPalette extends Applet
+        implements ActionListener, ItemListener {
+
+    Button btnRed, btnGreen, btnBlue;
+    String str = "";
+    CheckboxGroup cbgColor;
+    CheckboxGroup cbgImage;
+    Checkbox optFore, optBack;
+    Checkbox optMb, optWsb;
+    Image imgMb, imgWsb;
+    TextArea txtaComments = new TextArea("", 5, 30);
+
+    public void init() {
+        setLayout(new GridLayout(4, 3));
+
+        cbgColor = new CheckboxGroup();
+        cbgImage = new CheckboxGroup();
+
+        Label lblColor = new Label("Select the Area :");
+        Label lblImage = new Label("Select the Image :");
+
+        optFore = new Checkbox("Foreground", cbgColor, true);
+        optBack = new Checkbox("Background", cbgColor, false);
+
+        optMb = new Checkbox("REC-Main Block", cbgImage, true);
+        optWsb = new Checkbox("REC-Workshop Block", cbgImage, false);
+
+        btnRed = new Button("Red");
+        btnGreen = new Button("Green");
+        btnBlue = new Button("Blue");
+
+        imgMb = getImage(getDocumentBase(), getParameter("recmb"));
+        imgWsb = getImage(getDocumentBase(), getParameter("recwsb"));
+
+        add(btnRed);
+        add(btnGreen);
+        add(btnBlue);
+        add(lblColor);
+        add(optFore);
+        add(optBack);
+        add(lblImage);
+        add(optMb);
+        add(optWsb);
+        add(txtaComments);
+
+        optFore.addItemListener(this);
+        optBack.addItemListener(this);
+        optMb.addItemListener(this);
+        optWsb.addItemListener(this);
+
+        btnRed.addActionListener(this);
+        btnGreen.addActionListener(this);
+        btnBlue.addActionListener(this);
+    }
+
+    public void actionPerformed(ActionEvent ae) {
+        str = cbgColor.getSelectedCheckbox().getLabel();
+
+        if(ae.getSource() == btnRed && str.equals("Background"))
+            txtaComments.setBackground(Color.red);
+
+        if(ae.getSource() == btnRed && str.equals("Foreground"))
+            txtaComments.setForeground(Color.red);
+
+        if(ae.getSource() == btnGreen && str.equals("Background"))
+            txtaComments.setBackground(Color.green);
+
+        if(ae.getSource() == btnGreen && str.equals("Foreground"))
+            txtaComments.setForeground(Color.green);
+
+        if(ae.getSource() == btnBlue && str.equals("Background"))
+            txtaComments.setBackground(Color.blue);
+
+        if(ae.getSource() == btnBlue && str.equals("Foreground"))
+            txtaComments.setForeground(Color.blue);
+    }
+
+    public void itemStateChanged(ItemEvent ie) {
+        repaint();
+    }
+
+    public void paint(Graphics g) {
+        if(optMb.getState() == true)
+            g.drawImage(imgMb, 200, 400, this);
+
+        if(optWsb.getState() == true)
+            g.drawImage(imgWsb, 200, 400, this);
+    }
+}</code></pre>
+    </section>
+
+    <section class="experiment" id="exp5">
+        <span class="number">Experiment 5</span>
+        <h2>Session Object</h2>
+        <h3>Student-reg.jsp</h3>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Student Registration Form&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;form action="second.jsp" method="post"&gt;
+    First name:
+    &lt;input type="text" name="firstName" /&gt;
+
+    &lt;br/&gt;&lt;br/&gt;
+
+    Last name:
+    &lt;input type="text" name="lastName" /&gt;
+
+    &lt;br/&gt;&lt;br/&gt;
+
+    &lt;input type="submit" value="Submit" /&gt;
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>second.jsp</h3>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Student Registration Form&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;form action="student-dropdown-response.jsp"&gt;
+    First name:
+    &lt;input type="text" name="firstName" /&gt;
+
+    &lt;br/&gt;&lt;br/&gt;
+
+    Last name:
+    &lt;input type="text" name="lastName" /&gt;
+
+    &lt;br/&gt;&lt;br/&gt;
+
+    &lt;select name="country"&gt;
+        &lt;option&gt;Brazil&lt;/option&gt;
+        &lt;option&gt;France&lt;/option&gt;
+        &lt;option&gt;Germany&lt;/option&gt;
+        &lt;option&gt;India&lt;/option&gt;
+        &lt;option&gt;Turkey&lt;/option&gt;
+        &lt;option&gt;United Kingdom&lt;/option&gt;
+        &lt;option&gt;United States of America&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;br/&gt;&lt;br/&gt;
+
+    &lt;input type="submit" value="Submit" /&gt;
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </section>
+
+    <section class="experiment" id="exp6">
+        <span class="number">Experiment 6</span>
+        <h2>Client Server Application Using RMI</h2>
+
+        <h3>Client.java</h3>
+<pre><code>import java.net.*;
 import java.io.*;
 
 public class Client {
-  private Socket socket = null;
-  private DataInputStream input = null;
-  private DataOutputStream out = null;
+    private Socket socket = null;
+    private DataInputStream input = null;
+    private DataOutputStream out = null;
 
-  public Client(String address, int port) {
-    try {
-      socket = new Socket(address, port);
-      System.out.println("Connected");
-      input = new DataInputStream(System.in);
-      out = new DataOutputStream(socket.getOutputStream());
-    } catch (UnknownHostException u) { System.out.println(u); }
-      catch (IOException i) { System.out.println(i); }
+    public Client(String address, int port) {
+        try {
+            socket = new Socket(address, port);
+            System.out.println("Connected");
 
-    String line = "";
-    while (!line.equals("Over")) {
-      try {
-        line = input.readLine();
-        out.writeUTF(line);
-      } catch (IOException i) { System.out.println(i); }
+            input = new DataInputStream(System.in);
+            out = new DataOutputStream(socket.getOutputStream());
+        }
+        catch(UnknownHostException u) {
+            System.out.println(u);
+        }
+        catch(IOException i) {
+            System.out.println(i);
+        }
+
+        String line = "";
+
+        while(!line.equals("Over")) {
+            try {
+                line = input.readLine();
+                out.writeUTF(line);
+            }
+            catch(IOException i) {
+                System.out.println(i);
+            }
+        }
+
+        try {
+            input.close();
+            out.close();
+            socket.close();
+        }
+        catch(IOException i) {
+            System.out.println(i);
+        }
     }
-    try { input.close(); out.close(); socket.close(); }
-    catch (IOException i) { System.out.println(i); }
-  }
-  public static void main(String args[]) {
-    new Client("127.0.0.1", 5000);
-  }
-}`],["Server.java",`import java.net.*;
+
+    public static void main(String args[]) {
+        Client client = new Client("127.0.0.1", 5000);
+    }
+}</code></pre>
+
+        <h3>Server.java</h3>
+<pre><code>import java.net.*;
 import java.io.*;
 
 public class Server {
-  private Socket socket = null;
-  private ServerSocket server = null;
-  private DataInputStream in = null;
+    private Socket socket = null;
+    private ServerSocket server = null;
+    private DataInputStream in = null;
 
-  public Server(int port) {
-    try {
-      server = new ServerSocket(port);
-      System.out.println("Server started");
-      System.out.println("Waiting for a client ...");
-      socket = server.accept();
-      System.out.println("Client accepted");
-      in = new DataInputStream(
-          new BufferedInputStream(socket.getInputStream()));
-      String line = "";
-      while (!line.equals("Over")) {
+    public Server(int port) {
         try {
-          line = in.readUTF();
-          System.out.println(line);
-        } catch (IOException i) { System.out.println(i); }
-      }
-      System.out.println("Closing connection");
-      socket.close();
-      in.close();
-    } catch (IOException i) { System.out.println(i); }
-  }
-  public static void main(String args[]) {
-    new Server(5000);
-  }
-}`]],out:"Server window:\nServer started\nWaiting for a client ...\nClient accepted\nhello\njava\n\nClient window:\nConnected\nhello\njava"},
-{id:"calculator",t:"Calculator",aim:"An applet with two number fields and four buttons for add, subtract, multiply and divide.",
-note:"Dividing by zero or entering non-numbers throws an exception. Wrap the parsing in try/catch to handle that.",
-files:[["calculator.java",`import java.awt.*;
+            server = new ServerSocket(port);
+            System.out.println("Server started");
+            System.out.println("Waiting for a client ...");
+
+            socket = server.accept();
+            System.out.println("Client accepted");
+
+            in = new DataInputStream(
+                new BufferedInputStream(socket.getInputStream()));
+
+            String line = "";
+
+            while(!line.equals("Over")) {
+                try {
+                    line = in.readUTF();
+                    System.out.println(line);
+                }
+                catch(IOException i) {
+                    System.out.println(i);
+                }
+            }
+
+            System.out.println("Closing connection");
+            socket.close();
+            in.close();
+        }
+        catch(IOException i) {
+            System.out.println(i);
+        }
+    }
+
+    public static void main(String args[]) {
+        Server server = new Server(5000);
+    }
+}</code></pre>
+    </section>
+
+    <section class="experiment" id="exp7">
+        <span class="number">Experiment 7</span>
+        <h2>Calculator</h2>
+<pre><code>import java.awt.*;
 import java.awt.event.*;
 import java.applet.*;
-/* <applet code="calculator" width="700" height="200">
-</applet> */
-public class calculator extends Applet implements ActionListener {
-  TextField t1, t2, t3;
-  Button b1, b2, b3, b4;
 
-  public void init() {
-    add(new Label("First Number"));  t1 = new TextField(15); add(t1);
-    add(new Label("Second Number")); t2 = new TextField(15); add(t2);
-    add(new Label("Result"));        t3 = new TextField(15); add(t3);
-    b1 = new Button("ADD");  add(b1); b1.addActionListener(this);
-    b2 = new Button("SUB");  add(b2); b2.addActionListener(this);
-    b3 = new Button("MULT"); add(b3); b3.addActionListener(this);
-    b4 = new Button("DIV");  add(b4); b4.addActionListener(this);
-  }
-  public void actionPerformed(ActionEvent e) {
-    int x = Integer.parseInt(t1.getText());
-    int y = Integer.parseInt(t2.getText());
-    if (e.getSource() == b1) t3.setText(" " + (x + y));
-    if (e.getSource() == b2) t3.setText(" " + (x - y));
-    if (e.getSource() == b3) t3.setText(" " + (x * y));
-    if (e.getSource() == b4) t3.setText(" " + (x / y));
-    showStatus(" text & button example");
-    repaint();
-  }
-}`]],out:"Applet Viewer: calculator\nFirst Number [4]  Second Number [2]  Result [2]  [ADD] [SUB] [MULT] [DIV]\n(screenshot taken after pressing DIV: 4 / 2 = 2)"},
-{id:"rmi",t:"Remote method invocation (RMI)",aim:"A remote interface, its implementation, a server that registers it, and a client that calls addNum over RMI.",
-note:"In the PDF this program is filed under \"Socket programming\", but it is the RMI example. Start rmiregistry before running AddServer.",
-files:[["AddRem.java",`import java.rmi.*;
+public class calculator extends Applet
+        implements ActionListener {
 
-public interface AddRem extends Remote {
-  public int addNum(int a, int b) throws RemoteException;
-}`],["AddRemImpl.java",`import java.rmi.*;
-import java.rmi.server.UnicastRemoteObject;
+    String msg = "";
+    TextField t1, t2, t3;
+    Button b1, b2, b3, b4;
+    Label l1, l2, l3;
 
-public class AddRemImpl extends UnicastRemoteObject implements AddRem {
-  public AddRemImpl() throws RemoteException { }
-  public int addNum(int a, int b) { return (a + b); }
-}`],["AddServer.java",`import java.rmi.*;
+    public void init() {
+        l1 = new Label("First Number");
+        add(l1);
+
+        t1 = new TextField(15);
+        add(t1);
+
+        l2 = new Label("Second Number");
+        add(l2);
+
+        t2 = new TextField(15);
+        add(t2);
+
+        l3 = new Label("Result");
+        add(l3);
+
+        t3 = new TextField(15);
+        add(t3);
+
+        b1 = new Button("ADD");
+        add(b1);
+        b1.addActionListener(this);
+
+        b2 = new Button("SUB");
+        add(b2);
+        b2.addActionListener(this);
+
+        b3 = new Button("MULT");
+        add(b3);
+        b3.addActionListener(this);
+
+        b4 = new Button("DIV");
+        add(b4);
+        b4.addActionListener(this);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource() == b1) {
+            int x = Integer.parseInt(t1.getText());
+            int y = Integer.parseInt(t2.getText());
+            int sum = x + y;
+            t3.setText(" " + sum);
+        }
+
+        if(e.getSource() == b2) {
+            int x = Integer.parseInt(t1.getText());
+            int y = Integer.parseInt(t2.getText());
+            int sub = x - y;
+            t3.setText(" " + sub);
+        }
+
+        if(e.getSource() == b3) {
+            int x = Integer.parseInt(t1.getText());
+            int y = Integer.parseInt(t2.getText());
+            int mul = x * y;
+            t3.setText(" " + mul);
+        }
+
+        if(e.getSource() == b4) {
+            int x = Integer.parseInt(t1.getText());
+            int y = Integer.parseInt(t2.getText());
+            int div = x / y;
+            t3.setText(" " + div);
+        }
+
+        showStatus("text & button example");
+        repaint();
+    }
+}</code></pre>
+    </section>
+
+    <section class="experiment" id="exp8">
+        <span class="number">Experiment 8</span>
+        <h2>Socket Programming</h2>
+
+        <h3>AddClient.java</h3>
+<pre><code>import java.rmi.*;
 import java.net.*;
-
-public class AddServer {
-  public static void main(String args[]) {
-    try {
-      AddRemImpl locobj = new AddRemImpl();
-      Naming.rebind("rmi:///AddRem", locobj);
-    } catch (RemoteException re) { re.printStackTrace(); }
-      catch (MalformedURLException mfe) { mfe.printStackTrace(); }
-  }
-}`],["AddClient.java",`import java.rmi.*;
-import java.net.*;
+import java.io.*;
 import java.util.*;
 
 public class AddClient {
-  public static void main(String args[]) {
-    String host = "localhost";
-    Scanner sc = new Scanner(System.in);
-    System.out.println("Enter the 1st parameter");
-    int a = sc.nextInt();
-    System.out.println("Enter the 2nd parameter");
-    int b = sc.nextInt();
-    try {
-      AddRem remobj = (AddRem) Naming.lookup("rmi://" + host + "/AddRem");
-      System.out.println(remobj.addNum(a, b));
-    } catch (RemoteException re) { re.printStackTrace(); }
-      catch (NotBoundException nbe) { nbe.printStackTrace(); }
-      catch (MalformedURLException mue) { mue.printStackTrace(); }
-  }
-}`]],out:"Commands (server window):\njavac AddRem.java AddRemImpl.java AddServer.java\nstart rmiregistry\njava AddServer\n\nClient window:\njava AddClient\nEnter the 1st parameter\n4\nEnter the 2nd parameter\n6\n10"}
-];
-function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
-var toc=document.getElementById("toc"),list=document.getElementById("list");
-E.forEach(function(e,i){
-  var n=i+1;
-  toc.insertAdjacentHTML("beforeend",'<li><a href="#'+e.id+'"><span>'+n+'</span>'+esc(e.t)+'</a></li>');
-  var code=e.files.map(function(f,j){return '<div class="file"><div class="fn"><span>'+f[0]+'</span><button class="copy" data-e="'+i+'" data-f="'+j+'">Copy</button></div><pre class="code"><code>'+esc(f[1])+'</code></pre></div>'}).join("");
-  list.insertAdjacentHTML("beforeend",
-  '<section class="exp" id="'+e.id+'"><div class="head"><h3>'+n+'. '+esc(e.t)+'</h3><p class="aim">'+esc(e.aim)+'</p></div>'+
-  '<div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="code">Code</button><button role="tab" aria-selected="false" data-t="out">Output</button></div>'+
-  '<div class="pane" data-p="code">'+(e.note?'<p class="note">'+esc(e.note)+'</p>':'')+code+'</div>'+
-  '<div class="pane" data-p="out" hidden><p class="out-title">Sample output</p><pre class="term">'+esc(e.out)+'</pre></div></section>');
-});
-document.addEventListener("click",function(ev){
-  var b=ev.target.closest("button");if(!b)return;
-  if(b.dataset.t){
-    var s=b.closest("section");
-    s.querySelectorAll(".tabs button").forEach(function(x){x.setAttribute("aria-selected",x===b)});
-    s.querySelectorAll(".pane").forEach(function(p){p.hidden=p.dataset.p!==b.dataset.t});
-  }else if(b.classList.contains("copy")){
-    var txt=E[b.dataset.e].files[b.dataset.f][1];
-    try{navigator.clipboard.writeText(txt).then(function(){b.textContent="Copied";setTimeout(function(){b.textContent="Copy"},1500)})}catch(x){b.textContent="Select and copy"}
-  }
-});
-</script>
+    public static void main(String args[]) {
+
+        String host = "localhost";
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter the 1st parameter");
+        int a = sc.nextInt();
+
+        System.out.println("Enter the 2nd parameter");
+        int b = sc.nextInt();
+
+        try {
+            AddRem remobj =
+                (AddRem)Naming.lookup("rmi://" + host + "/AddRem");
+
+            System.out.println(remobj.addNum(a,b));
+        }
+        catch(RemoteException re) {
+            re.printStackTrace();
+        }
+        catch(NotBoundException nbe) {
+            nbe.printStackTrace();
+        }
+        catch(MalformedURLException nbe) {
+            nbe.printStackTrace();
+        }
+    }
+}</code></pre>
+
+        <h3>AddRem.java</h3>
+<pre><code>import java.rmi.*;
+
+public interface AddRem extends Remote {
+    public int addNum(int a, int b) throws RemoteException;
+}</code></pre>
+
+        <h3>AddRemImpl.java</h3>
+<pre><code>import java.rmi.*;
+import java.rmi.server.UnicastRemoteObject;
+
+public class AddRemImpl extends UnicastRemoteObject
+        implements AddRem {
+
+    public AddRemImpl() throws RemoteException {
+    }
+
+    public int addNum(int a, int b) {
+        return(a + b);
+    }
+}</code></pre>
+
+        <h3>AddServer.java</h3>
+<pre><code>import java.rmi.*;
+import java.net.*;
+
+public class AddServer {
+    public static void main(String args[]) {
+        try {
+            AddRemImpl locobj = new AddRemImpl();
+            Naming.rebind("rmi:///AddRem", locobj);
+        }
+        catch(RemoteException re) {
+            re.printStackTrace();
+        }
+        catch(MalformedURLException mfe) {
+            mfe.printStackTrace();
+        }
+    }
+}</code></pre>
+    </section>
+
+</main>
+
+<footer>
+    <p>Java Lab Experiments | HTML Presentation Website</p>
+    <a class="top" href="#top">↑ Back to Top</a>
+</footer>
+
 </body>
 </html>
