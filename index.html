@@ -2,754 +2,769 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Java Lab Experiments</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Advanced Web Technology Lab - Programs & Output</title>
 <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-        font-family:Arial,Helvetica,sans-serif;
-        background:#f4f7fb;
-        color:#1f2937;
-        line-height:1.6;
-    }
-    header{
-        background:linear-gradient(135deg,#172554,#2563eb);
-        color:white;
-        padding:55px 20px;
-        text-align:center;
-    }
-    header h1{font-size:42px;margin-bottom:10px}
-    header p{font-size:18px;opacity:.92}
-    nav{
-        position:sticky;
-        top:0;
-        z-index:10;
-        background:#0f172a;
-        padding:12px;
-        text-align:center;
-        box-shadow:0 2px 10px #0002;
-    }
-    nav a{
-        color:white;
-        text-decoration:none;
-        display:inline-block;
-        padding:8px 13px;
-        margin:3px;
-        border-radius:6px;
-        font-size:14px;
-    }
-    nav a:hover{background:#2563eb}
-    .container{width:min(1100px,92%);margin:35px auto}
-    .intro{
-        background:white;
-        padding:25px;
-        border-radius:14px;
-        box-shadow:0 5px 20px #00000012;
-        margin-bottom:25px;
-    }
-    .intro h2{color:#1d4ed8;margin-bottom:8px}
-    .grid{
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-        gap:18px;
-    }
-    .card{
-        background:white;
-        padding:22px;
-        border-radius:14px;
-        border-left:5px solid #2563eb;
-        box-shadow:0 5px 18px #00000010;
-        transition:.25s;
-    }
-    .card:hover{transform:translateY(-4px);box-shadow:0 9px 25px #00000018}
-    .card h3{color:#1d4ed8;margin-bottom:8px}
-    .card a{color:#2563eb;font-weight:bold;text-decoration:none}
-    section.experiment{
-        background:white;
-        margin:30px 0;
-        padding:28px;
-        border-radius:16px;
-        box-shadow:0 5px 20px #00000012;
-        scroll-margin-top:75px;
-    }
-    .number{
-        display:inline-block;
-        background:#2563eb;
-        color:white;
-        padding:4px 10px;
-        border-radius:20px;
-        font-size:13px;
-        margin-bottom:8px;
-    }
-    section h2{color:#172554;margin-bottom:8px}
-    section h3{margin:20px 0 8px;color:#334155}
-    pre{
-        background:#0b1220;
-        color:#e5e7eb;
-        padding:18px;
-        border-radius:10px;
-        overflow-x:auto;
-        font-size:14px;
-        line-height:1.5;
-    }
-    code{font-family:Consolas,Monaco,monospace}
-    .note{
-        background:#eff6ff;
-        border-left:4px solid #2563eb;
-        padding:12px 15px;
-        margin:15px 0;
-        border-radius:6px;
-    }
-    footer{
-        background:#0f172a;
-        color:white;
-        text-align:center;
-        padding:25px;
-        margin-top:40px;
-    }
-    .top{
-        display:inline-block;
-        margin-top:10px;
-        color:#93c5fd;
-        text-decoration:none;
-    }
-    @media(max-width:600px){
-        header h1{font-size:30px}
-        section.experiment{padding:20px}
-        pre{font-size:12px}
-    }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef2f7;color:#172033}
+header{background:linear-gradient(135deg,#111827,#1d4ed8);color:white;text-align:center;padding:38px 18px}
+header h1{margin:0;font-size:32px} header p{color:#dbeafe}
+nav{position:sticky;top:0;z-index:20;background:#0f172a;padding:10px;text-align:center;box-shadow:0 2px 10px #0004}
+nav a{display:inline-block;color:white;text-decoration:none;padding:8px 10px;margin:3px;border-radius:6px;font-size:13px}
+nav a:hover{background:#2563eb}
+.container{width:min(1200px,95%);margin:25px auto}
+.intro{background:white;padding:24px;border-radius:12px;box-shadow:0 3px 15px #0001;margin-bottom:25px}
+.experiment{background:white;border-radius:14px;margin:25px 0;padding:24px;box-shadow:0 4px 18px #00000012;position:relative}
+.exp-head{display:flex;gap:15px;align-items:center;border-bottom:2px solid #e5e7eb;padding-bottom:15px;margin-bottom:20px}
+.exp-head h2{margin:0;color:#1d4ed8} .exp-head p{margin:5px 0;color:#64748b}
+.number{background:#2563eb;color:white;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;font-weight:bold;font-size:18px}
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+h3{margin:5px 0 10px;color:#334155}
+pre{margin:0;background:#0b1220;color:#dbeafe;padding:18px;border-radius:9px;overflow:auto;max-height:650px;line-height:1.5;font-size:13px;white-space:pre-wrap}
+.output{background:#fff;border:1px solid #cbd5e1;border-radius:9px;padding:20px;min-height:180px;overflow:auto;font-family:Arial,sans-serif;line-height:1.6;white-space:pre-wrap}
+.top{margin-top:15px;background:#64748b;color:white;border:0;padding:8px 13px;border-radius:5px;cursor:pointer}
+.note{background:#fff7ed;border-left:4px solid #f97316;padding:12px;margin-top:12px}
+footer{background:#0f172a;color:white;text-align:center;padding:25px;margin-top:30px}
+@media(max-width:800px){.columns{grid-template-columns:1fr}header h1{font-size:24px}}
 </style>
 </head>
-
-<body id="top">
-
+<body>
 <header>
-    <h1>Java Lab Experiments</h1>
-    <p>Java Programming Laboratory – Experiment Record</p>
+<h1>Advanced Web Technology Lab</h1>
+<p>Program Code &amp; Output — Based on the Uploaded Lab Document</p>
 </header>
-
 <nav>
-    <a href="#home">Home</a>
-    <a href="#exp1">1. Welcome</a>
-    <a href="#exp2">2. Exception</a>
-    <a href="#exp3">3. JDBC</a>
-    <a href="#exp4">4. Color</a>
-    <a href="#exp5">5. Session</a>
-    <a href="#exp6">6. RMI</a>
-    <a href="#exp7">7. Calculator</a>
-    <a href="#exp8">8. Socket</a>
+<a href="#p1">Program 1</a><a href="#p2">Program 2</a><a href="#p3">Program 3</a><a href="#p4">Program 4</a><a href="#p5">Program 5</a><a href="#p6">Program 6</a><a href="#p7">Program 7</a><a href="#p8">Program 8</a><a href="#p9">Program 9</a><a href="#p10">Program 10</a>
 </nav>
+<main class="container">
+<div class="intro">
+<h2>📚 Lab Programs</h2>
+<p>This website presents each program from the lab document with its source code and a corresponding output preview.</p>
+<div class="note"><b>Important:</b> The original Programs 5–10 use JSP/ASP/server/database components. Their code is displayed as provided in the lab, while the output area is a visual representation of the expected/result screen. A normal HTML file cannot execute JSP, ASP, JavaBeans or SQL Server code by itself.</div>
+</div>
 
-<main class="container" id="home">
+<section class="experiment" id="p1">
+  <div class="exp-head">
+    <span class="number">01</span>
+    <div><h2>1. Job Listing In XML</h2><p>joblisting.xml + joblisting.xsl</p></div>
+  </div>
+  <div class="columns">
+    <div>
+      <h3>📄 Program Code</h3>
+      <pre><code>Joblisting.xml
 
-    <div class="intro">
-        <h2>Java Lab Record</h2>
-        <p>
-            This website presents the Java laboratory experiments from the supplied
-            lab record. Select an experiment below to view its title and source code.
-        </p>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;joblisting.xsl&quot;?&gt;
+&lt;joblisting&gt;
+&lt;job&gt;
+&lt;name&gt;Clerk&lt;/name&gt;
+&lt;salary&gt;15,000&lt;/salary&gt;
+&lt;description&gt;Experience 2 years with English Knowledge&lt;/description&gt;
+&lt;qualification&gt;Any Degree&lt;/qualification&gt;
+&lt;/job&gt;
+&lt;job&gt;
+&lt;name&gt;Typist&lt;/name&gt;
+&lt;salary&gt;10,000&lt;/salary&gt;
+&lt;description&gt;Experience 2 years with Computer Knowledge&lt;/description&gt;
+&lt;qualification&gt;Any Degree with Typing&lt;/qualification&gt;
+&lt;/job&gt;
+&lt;job&gt;
+&lt;name&gt;Engineer&lt;/name&gt;
+&lt;salary&gt;25,000&lt;/salary&gt;
+&lt;description&gt;Experience 2 years&lt;/description&gt;
+&lt;qualification&gt;B.E/B.TECH/M.E/M.Tech&lt;/qualification&gt;
+&lt;/job&gt;
+&lt;/joblisting&gt;
+
+
+Joblisting.xsl
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;1.0&quot;&gt;
+&lt;xsl:template match=&quot;/&quot;&gt;
+&lt;html&gt;
+&lt;body fontface=&quot;Times new roman&quot;&gt;
+&lt;center&gt;&lt;u&gt;&lt;b&gt;&lt;h2&gt;Job list&lt;/h2&gt;&lt;/b&gt;&lt;/u&gt;&lt;/center&gt;
+&lt;table border=&quot;1&quot; align=&quot;center&quot; bgcolor=&quot;pink&quot;&gt;
+&lt;tr bgcolor=&quot;red&quot;&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;Job Name&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;Salary&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;Experience&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;Qualification&lt;/th&gt;
+&lt;/tr&gt;
+&lt;xsl:for-each select=&quot;joblisting/job&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;xsl:value-of select=&quot;name&quot;/&gt;&lt;/td&gt;
+&lt;td&gt;&lt;xsl:value-of select=&quot;salary&quot;/&gt;&lt;/td&gt;
+&lt;td&gt;&lt;xsl:value-of select=&quot;description&quot;/&gt;&lt;/td&gt;
+&lt;td&gt;&lt;xsl:value-of select=&quot;qualification&quot;/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/xsl:for-each&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</code></pre>
     </div>
-
-    <div class="grid">
-        <div class="card"><h3>01. Welcome Message</h3><p>Servlet program for displaying a welcome message.</p><a href="#exp1">View Experiment →</a></div>
-        <div class="card"><h3>02. Exception Handling</h3><p>Demonstrates common Java exceptions.</p><a href="#exp2">View Experiment →</a></div>
-        <div class="card"><h3>03. JDBC</h3><p>Connects Java with a MySQL database.</p><a href="#exp3">View Experiment →</a></div>
-        <div class="card"><h3>04. Color Palette</h3><p>Java Applet color and image selection program.</p><a href="#exp4">View Experiment →</a></div>
-        <div class="card"><h3>05. Session Object</h3><p>Student registration JSP example.</p><a href="#exp5">View Experiment →</a></div>
-        <div class="card"><h3>06. Client Server / RMI</h3><p>Client and server socket communication example.</p><a href="#exp6">View Experiment →</a></div>
-        <div class="card"><h3>07. Calculator</h3><p>Applet calculator for arithmetic operations.</p><a href="#exp7">View Experiment →</a></div>
-        <div class="card"><h3>08. Socket Programming</h3><p>RMI addition client, interface and server.</p><a href="#exp8">View Experiment →</a></div>
+    <div>
+      <h3>🖥️ Output</h3>
+      <div class="output">&lt;h2&gt;Job list&lt;/h2&gt;<br>&lt;table&gt;<br>&lt;tr&gt;&lt;th&gt;Job Name&lt;/th&gt;&lt;th&gt;Salary&lt;/th&gt;&lt;th&gt;Experience&lt;/th&gt;&lt;th&gt;Qualification&lt;/th&gt;&lt;/tr&gt;<br>&lt;tr&gt;&lt;td&gt;Clerk&lt;/td&gt;&lt;td&gt;15,000&lt;/td&gt;&lt;td&gt;Experience 2 years with English Knowledge&lt;/td&gt;&lt;td&gt;Any Degree&lt;/td&gt;&lt;/tr&gt;<br>&lt;tr&gt;&lt;td&gt;Typist&lt;/td&gt;&lt;td&gt;10,000&lt;/td&gt;&lt;td&gt;Experience 2 years with Computer Knowledge&lt;/td&gt;&lt;td&gt;Any Degree with Typing&lt;/td&gt;&lt;/tr&gt;<br>&lt;tr&gt;&lt;td&gt;Engineer&lt;/td&gt;&lt;td&gt;25,000&lt;/td&gt;&lt;td&gt;Experience 2 years&lt;/td&gt;&lt;td&gt;B.E/B.TECH/M.E/M.Tech&lt;/td&gt;&lt;/tr&gt;<br>&lt;/table&gt;</div>
     </div>
-
-    <section class="experiment" id="exp1">
-        <span class="number">Experiment 1</span>
-        <h2>Welcome Message</h2>
-        <h3>NewServlet.java</h3>
-<pre><code>import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-@WebServlet(urlPatterns = {"/NewServlet"})
-public class NewServlet extends HttpServlet {
-
-    protected void processRequest(HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException {
-
-        response.setContentType("text/html;charset=UTF-8");
-
-        try (PrintWriter out = response.getWriter()) {
-            out.println("&lt;!DOCTYPE html&gt;");
-            out.println("&lt;html&gt;");
-            out.println("&lt;head&gt;");
-            out.println("&lt;title&gt;Servlet NewServlet&lt;/title&gt;");
-            out.println("&lt;/head&gt;");
-            out.println("&lt;body&gt;");
-            out.println("&lt;h1&gt;Servlet NewServlet at "
-                    + request.getContextPath()
-                    + " welcome to this page&lt;/h1&gt;");
-            out.println("&lt;/body&gt;");
-            out.println("&lt;/html&gt;");
-        }
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-}</code></pre>
-    </section>
-
-    <section class="experiment" id="exp2">
-        <span class="number">Experiment 2</span>
-        <h2>Exception Handling</h2>
-<pre><code>import java.io.*;
-
-class ex {
-    public static void main(String args[]) throws IOException {
-
-        InputStreamReader r = new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(r);
-
-        int op;
-        do {
-            System.out.println("Enter your option");
-            System.out.println("1.Arithmetic Exception");
-            System.out.println("2.StringIndexOutOfBound Exception");
-            System.out.println("3.FileNotFound Exception");
-            System.out.println("4.NumberFormat Exception");
-            System.out.println("5.ArrayIndexOutOfBounds Exception");
-
-            op = Integer.parseInt(br.readLine());
-
-            switch(op) {
-                case 1:
-                    try {
-                        int a = 30, b = 0;
-                        int c = a / b;
-                        System.out.println("Result = " + c);
-                    } catch(ArithmeticException e) {
-                        System.out.println("Can't divide a number by 0");
-                    }
-                    break;
-
-                case 2:
-                    try {
-                        String a = "This is like chipping ";
-                        char c = a.charAt(24);
-                        System.out.println(c);
-                    } catch(StringIndexOutOfBoundsException e) {
-                        System.out.println("StringIndexOutOfBoundsException");
-                    }
-                    break;
-
-                case 3:
-                    try {
-                        File file = new File("E://file.txt");
-                        FileReader fr = new FileReader(file);
-                    } catch(FileNotFoundException e) {
-                        System.out.println("File does not exist");
-                    }
-                    break;
-
-                case 4:
-                    try {
-                        int num = Integer.parseInt("akki");
-                        System.out.println(num);
-                    } catch(NumberFormatException e) {
-                        System.out.println("Number format exception");
-                    }
-                    break;
-
-                case 5:
-                    try {
-                        int a[] = new int[5];
-                        a[6] = 9;
-                    } catch(ArrayIndexOutOfBoundsException e) {
-                        System.out.println("Array Index is Out Of Bounds");
-                    }
-                    break;
-            }
-        } while(op <= 5);
-    }
-}</code></pre>
-    </section>
-
-    <section class="experiment" id="exp3">
-        <span class="number">Experiment 3</span>
-        <h2>Database Connection Using JDBC</h2>
-<pre><code>import java.sql.*;
-
-public class odbcjava {
-    public static void main(String[] args) {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-
-            Connection con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/kk", "root", "");
-
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select * from kk");
-
-            while(rs.next())
-                System.out.println(rs.getInt(1) + "" + rs.getString(2));
-
-            con.close();
-        }
-        catch(Exception e) {
-            System.out.println(e);
-        }
-    }
-}</code></pre>
-    </section>
-
-    <section class="experiment" id="exp4">
-        <span class="number">Experiment 4</span>
-        <h2>Color Palette</h2>
-<pre><code>import java.awt.*;
-import java.awt.event.*;
-import java.applet.*;
-
-public class ColorPalette extends Applet
-        implements ActionListener, ItemListener {
-
-    Button btnRed, btnGreen, btnBlue;
-    String str = "";
-    CheckboxGroup cbgColor;
-    CheckboxGroup cbgImage;
-    Checkbox optFore, optBack;
-    Checkbox optMb, optWsb;
-    Image imgMb, imgWsb;
-    TextArea txtaComments = new TextArea("", 5, 30);
-
-    public void init() {
-        setLayout(new GridLayout(4, 3));
-
-        cbgColor = new CheckboxGroup();
-        cbgImage = new CheckboxGroup();
-
-        Label lblColor = new Label("Select the Area :");
-        Label lblImage = new Label("Select the Image :");
-
-        optFore = new Checkbox("Foreground", cbgColor, true);
-        optBack = new Checkbox("Background", cbgColor, false);
-
-        optMb = new Checkbox("REC-Main Block", cbgImage, true);
-        optWsb = new Checkbox("REC-Workshop Block", cbgImage, false);
-
-        btnRed = new Button("Red");
-        btnGreen = new Button("Green");
-        btnBlue = new Button("Blue");
-
-        imgMb = getImage(getDocumentBase(), getParameter("recmb"));
-        imgWsb = getImage(getDocumentBase(), getParameter("recwsb"));
-
-        add(btnRed);
-        add(btnGreen);
-        add(btnBlue);
-        add(lblColor);
-        add(optFore);
-        add(optBack);
-        add(lblImage);
-        add(optMb);
-        add(optWsb);
-        add(txtaComments);
-
-        optFore.addItemListener(this);
-        optBack.addItemListener(this);
-        optMb.addItemListener(this);
-        optWsb.addItemListener(this);
-
-        btnRed.addActionListener(this);
-        btnGreen.addActionListener(this);
-        btnBlue.addActionListener(this);
-    }
-
-    public void actionPerformed(ActionEvent ae) {
-        str = cbgColor.getSelectedCheckbox().getLabel();
-
-        if(ae.getSource() == btnRed && str.equals("Background"))
-            txtaComments.setBackground(Color.red);
-
-        if(ae.getSource() == btnRed && str.equals("Foreground"))
-            txtaComments.setForeground(Color.red);
-
-        if(ae.getSource() == btnGreen && str.equals("Background"))
-            txtaComments.setBackground(Color.green);
-
-        if(ae.getSource() == btnGreen && str.equals("Foreground"))
-            txtaComments.setForeground(Color.green);
-
-        if(ae.getSource() == btnBlue && str.equals("Background"))
-            txtaComments.setBackground(Color.blue);
-
-        if(ae.getSource() == btnBlue && str.equals("Foreground"))
-            txtaComments.setForeground(Color.blue);
-    }
-
-    public void itemStateChanged(ItemEvent ie) {
-        repaint();
-    }
-
-    public void paint(Graphics g) {
-        if(optMb.getState() == true)
-            g.drawImage(imgMb, 200, 400, this);
-
-        if(optWsb.getState() == true)
-            g.drawImage(imgWsb, 200, 400, this);
-    }
-}</code></pre>
-    </section>
-
-    <section class="experiment" id="exp5">
-        <span class="number">Experiment 5</span>
-        <h2>Session Object</h2>
-        <h3>Student-reg.jsp</h3>
-<pre><code>&lt;html&gt;
+  </div>
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+</section>
+<section class="experiment" id="p2">
+  <div class="exp-head">
+    <span class="number">02</span>
+    <div><h2>2. Convert lowercase to UpperCase using Javascript</h2><p>Upper.html</p></div>
+  </div>
+  <div class="columns">
+    <div>
+      <h3>📄 Program Code</h3>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
 &lt;head&gt;
-    &lt;title&gt;Student Registration Form&lt;/title&gt;
+&lt;title&gt;Convert the lowercase letter to uppercase letters&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-
-&lt;form action="second.jsp" method="post"&gt;
-    First name:
-    &lt;input type="text" name="firstName" /&gt;
-
-    &lt;br/&gt;&lt;br/&gt;
-
-    Last name:
-    &lt;input type="text" name="lastName" /&gt;
-
-    &lt;br/&gt;&lt;br/&gt;
-
-    &lt;input type="submit" value="Submit" /&gt;
-&lt;/form&gt;
-
+&lt;p&gt;Click the button to convert the string to uppercase letters.&lt;/p&gt;
+&lt;input type=&quot;text&quot; style=&quot;width:300px;padding:6px;font-size:13px&quot; id=&quot;text&quot;
+placeholder=&quot;Enter text to convert to lowercase or uppercase&quot;/&gt;
+&lt;br/&gt;&lt;br/&gt;
+&lt;input type=&quot;text&quot; style=&quot;width:310px;padding:6px&quot; id=&quot;result&quot; placeholder=&quot;Result&quot;
+readonly/&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;button onclick=&quot;myFunction()&quot;&gt;UpperCase&lt;/button&gt;
+&lt;button onclick=&quot;clearfunc()&quot;&gt;Reset&lt;/button&gt;
+&lt;script&gt;
+function myFunction()
+{
+var data = document.getElementById(&quot;text&quot;).value;
+var lowerCase = data.toUpperCase();
+document.getElementById(&quot;result&quot;).value = lowerCase;
+}
+function clearfunc()
+{
+document.getElementById(&quot;text&quot;).value=&quot;&quot;;
+document.getElementById(&quot;result&quot;).value=&quot;&quot;;
+}
+&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+    </div>
+    <div>
+      <h3>🖥️ Output</h3>
+      <div class="output">&lt;p&gt;Click the button to convert the string to uppercase letters.&lt;/p&gt;<br>&lt;input placeholder=&quot;Enter text to convert to lowercase or uppercase&quot;&gt;<br>&lt;br&gt;&lt;br&gt;<br>&lt;input placeholder=&quot;Result&quot; readonly&gt;<br>&lt;br&gt;&lt;br&gt;<br>&lt;button&gt;UpperCase&lt;/button&gt;<br>&lt;button&gt;Reset&lt;/button&gt;<br>&lt;p&gt;&lt;b&gt;Example output:&lt;/b&gt; hello world → HELLO WORLD&lt;/p&gt;</div>
+    </div>
+  </div>
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+</section>
+<section class="experiment" id="p3">
+  <div class="exp-head">
+    <span class="number">03</span>
+    <div><h2>3. User Validation in Javascript</h2><p>Validation.html + welcome.html</p></div>
+  </div>
+  <div class="columns">
+    <div>
+      <h3>📄 Program Code</h3>
+      <pre><code>Validation.html
 
-        <h3>second.jsp</h3>
-<pre><code>&lt;html&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
 &lt;head&gt;
-    &lt;title&gt;Student Registration Form&lt;/title&gt;
+&lt;title&gt;Welcome To Login Form&lt;/title&gt;
+&lt;script&gt;
+function login()
+{
+var pwd = document.getElementById(&quot;pwd1&quot;).value;
+var uname = document.getElementById(&quot;email&quot;).value;
+var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\- ])+\.)+([a-zA-Z0-9]{2,4})+$/;
+if(uname == &quot;&quot;)
+{
+alert(&quot;please enter user name.&quot;);
+}
+else if(pwd==&quot;&quot;)
+{
+alert(&quot;enter the password&quot;);
+}
+else if(pwd.length&lt; 6)
+{
+alert(&quot;Password min length is 6.&quot;);
+}
+else
+{
+alert(&#x27;Thank You for Login &amp; You are Redirecting to Welcome page&#x27;);
+window.location=&quot;welcome.html&quot;;
+}
+}
+function clearFunc()
+{
+document.getElementById(&quot;email&quot;).value=&quot;&quot;;
+document.getElementById(&quot;pwd1&quot;).value=&quot;&quot;;
+}
+&lt;/script&gt;
 &lt;/head&gt;
-&lt;body&gt;
+&lt;body align=&quot;center&quot;&gt;
+&lt;h2&gt;Welcome To My Account Login&lt;/h2&gt;
+Enter User Name :
+&lt;input type=&quot;text&quot; placeholder=&quot;Enter user name here&quot; id=&quot;email&quot; class=&quot;tb&quot; /&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+Enter Password :
+&lt;input type=&quot;password&quot; placeholder=&quot;Enter Password here&quot; id=&quot;pwd1&quot; class=&quot;tb&quot; /&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;input type=&quot;submit&quot; value=&quot;Login&quot; class=&quot;btn&quot; onClick=&quot;login()&quot; /&gt;
+&lt;input type=&quot;submit&quot; value=&quot;Reset&quot; onclick=&quot;clearFunc()&quot; class=&quot;btn&quot; /&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
-&lt;form action="student-dropdown-response.jsp"&gt;
-    First name:
-    &lt;input type="text" name="firstName" /&gt;
 
-    &lt;br/&gt;&lt;br/&gt;
+welcome.html
 
-    Last name:
-    &lt;input type="text" name="lastName" /&gt;
-
-    &lt;br/&gt;&lt;br/&gt;
-
-    &lt;select name="country"&gt;
-        &lt;option&gt;Brazil&lt;/option&gt;
-        &lt;option&gt;France&lt;/option&gt;
-        &lt;option&gt;Germany&lt;/option&gt;
-        &lt;option&gt;India&lt;/option&gt;
-        &lt;option&gt;Turkey&lt;/option&gt;
-        &lt;option&gt;United Kingdom&lt;/option&gt;
-        &lt;option&gt;United States of America&lt;/option&gt;
-    &lt;/select&gt;
-
-    &lt;br/&gt;&lt;br/&gt;
-
-    &lt;input type="submit" value="Submit" /&gt;
-&lt;/form&gt;
-
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;welcome page&lt;/title&gt;&lt;/head&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;body align=&quot;center&quot;&gt;
+&lt;b&gt;
+&lt;h1&gt;welcome to admin page!&lt;/h1&gt;
+&lt;/b&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-    </section>
+    </div>
+    <div>
+      <h3>🖥️ Output</h3>
+      <div class="output">&lt;h2&gt;Welcome To My Account Login&lt;/h2&gt;<br>&lt;p&gt;Enter User Name : &lt;input placeholder=&quot;Enter user name here&quot;&gt;&lt;/p&gt;<br>&lt;p&gt;Enter Password : &lt;input type=&quot;password&quot; placeholder=&quot;Enter Password here&quot;&gt;&lt;/p&gt;<br>&lt;button&gt;Login&lt;/button&gt;<br>&lt;button&gt;Reset&lt;/button&gt;<br>&lt;hr&gt;<br>&lt;h1&gt;welcome to admin page!&lt;/h1&gt;</div>
+    </div>
+  </div>
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+</section>
+<section class="experiment" id="p4">
+  <div class="exp-head">
+    <span class="number">04</span>
+    <div><h2>4. Display the current date and time in Javascript</h2><p>DateTime.html</p></div>
+  </div>
+  <div class="columns">
+    <div>
+      <h3>📄 Program Code</h3>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;h1 align=&quot;center&quot;&gt;Display the current date and time&lt;/h1&gt;
+Get local machine date time :&lt;p id=&quot;demo&quot;&gt;&lt;/p&gt;
+Display Date : &lt;p id=&quot;demo1&quot;&gt;&lt;/p&gt;
+Display Time : &lt;p id=&quot;demo2&quot;&gt;&lt;/p&gt;
+&lt;script&gt;
+var date = new Date();
+document.getElementById(&quot;demo&quot;).innerHTML = date;
+var n = date.toDateString();
+document.getElementById(&quot;demo1&quot;).innerHTML = n;
+var time = date.toLocaleTimeString();
+document.getElementById(&quot;demo2&quot;).innerHTML = time;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+    <div>
+      <h3>🖥️ Output</h3>
+      <div class="output">&lt;h1&gt;Display the current date and time&lt;/h1&gt;<br>&lt;p&gt;Get local machine date time : &lt;b&gt;Thu Oct 08 2026 18:46:00&lt;/b&gt;&lt;/p&gt;<br>&lt;p&gt;Display Date : &lt;b&gt;Thu Oct 08 2026&lt;/b&gt;&lt;/p&gt;<br>&lt;p&gt;Display Time : &lt;b&gt;6:46:00 PM&lt;/b&gt;&lt;/p&gt;<br>&lt;p class=&quot;note&quot;&gt;The exact date/time changes according to the computer running the page.&lt;/p&gt;</div>
+    </div>
+  </div>
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+</section>
+<section class="experiment" id="p5">
+  <div class="exp-head">
+    <span class="number">05</span>
+    <div><h2>5. User Authentication in JSP</h2><p>Index.jsp + Login.jsp</p></div>
+  </div>
+  <div class="columns">
+    <div>
+      <h3>📄 Program Code</h3>
+      <pre><code>Index.jsp
 
-    <section class="experiment" id="exp6">
-        <span class="number">Experiment 6</span>
-        <h2>Client Server Application Using RMI</h2>
+&lt;%@page contentType=&quot;text/html&quot; pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;div align=&quot;center&quot;&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;form action=&quot;login.jsp&quot; method=&quot;POST&quot;&gt;
+&lt;div&gt;&lt;h2&gt;LOGIN&lt;/h2&gt;&lt;/div&gt;
+&lt;div&gt;
+&lt;label&gt;UserName&lt;/label&gt;
+&lt;input type=&quot;text&quot; id=&quot;uname&quot; name=&quot;uname&quot;&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+&lt;div&gt;
+&lt;label&gt;Password&lt;/label&gt;
+&lt;input type=&quot;text&quot; id=&quot;pass&quot; name=&quot;pass&quot;&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+&lt;div&gt;
+&lt;button type=&quot;submit&quot;&gt;submit&lt;/button&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
-        <h3>Client.java</h3>
-<pre><code>import java.net.*;
-import java.io.*;
 
-public class Client {
-    private Socket socket = null;
-    private DataInputStream input = null;
-    private DataOutputStream out = null;
+Login.jsp
 
-    public Client(String address, int port) {
-        try {
-            socket = new Socket(address, port);
-            System.out.println("Connected");
+&lt;%
+String uname = request.getParameter(&quot;uname&quot;);
+String password = request.getParameter(&quot;pass&quot;);
 
-            input = new DataInputStream(System.in);
-            out = new DataOutputStream(socket.getOutputStream());
-        }
-        catch(UnknownHostException u) {
-            System.out.println(u);
-        }
-        catch(IOException i) {
-            System.out.println(i);
-        }
+if(uname.equals(&quot;Sindhu&quot;) &amp;&amp; password.equals(&quot;sindhu12345&quot;))
+{
+out.println(&quot;Login success&quot;);
+}
+else
+{
+out.println(&quot;Login failed&quot;);
+}
+%&gt;</code></pre>
+    </div>
+    <div>
+      <h3>🖥️ Output</h3>
+      <div class="output">LOGIN<br><br>UserName: __________________<br><br>Password: __________________<br><br>[ submit ]<br><br>Demo result:<br>Login success<br><br>(The source checks Sindhu / sindhu12345.)</div>
+    </div>
+  </div>
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+</section>
+<section class="experiment" id="p6">
+  <div class="exp-head">
+    <span class="number">06</span>
+    <div><h2>6. Shopping Cart in JSP</h2><p>Index.jsp + Carts.jsp + MyBean.java + HTMLFilter.java</p></div>
+  </div>
+  <div class="columns">
+    <div>
+      <h3>📄 Program Code</h3>
+      <pre><code>Index.jsp
 
-        String line = "";
+&lt;%@page contentType=&quot;text/html&quot; pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;carts&lt;/title&gt;
+&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot; align=&quot;center&quot;&gt;
+&lt;h2&gt;SHOPPING CART&lt;/h2&gt;
+&lt;font size = 5 color=&quot;#CC0000&quot;&gt;
+&lt;form type=POST action=carts.jsp&gt;
+&lt;BR&gt;
+Please enter item to add or remove:
+&lt;br&gt;
+Add Item:
+&lt;SELECT NAME=&quot;item&quot;&gt;
+&lt;OPTION&gt;Beavis &amp; Butt-head Video collection
+&lt;OPTION&gt;X-files movie
+&lt;OPTION&gt;Twin peaks tapes
+&lt;OPTION&gt;NIN CD
+&lt;OPTION&gt;JSP Book
+&lt;OPTION&gt;Concert tickets
+&lt;OPTION&gt;Love life
+&lt;OPTION&gt;Switch blade
+&lt;OPTION&gt;Rex, Rugs &amp; Rock n&#x27; Roll
+&lt;/SELECT&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;INPUT TYPE=submit name=&quot;submit&quot; value=&quot;add&quot;&gt;
+&lt;INPUT TYPE=submit name=&quot;submit&quot; value=&quot;remove&quot;&gt;
+&lt;/form&gt;
+&lt;/FONT&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
-        while(!line.equals("Over")) {
-            try {
-                line = input.readLine();
-                out.writeUTF(line);
-            }
-            catch(IOException i) {
-                System.out.println(i);
-            }
-        }
 
-        try {
-            input.close();
-            out.close();
-            socket.close();
-        }
-        catch(IOException i) {
-            System.out.println(i);
-        }
-    }
+Carts.jsp
 
-    public static void main(String args[]) {
-        Client client = new Client("127.0.0.1", 5000);
-    }
-}</code></pre>
+&lt;%@page contentType=&quot;text/html&quot; pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;jsp:useBean id=&quot;cart&quot; scope=&quot;session&quot; class=&quot;beans.MyBean&quot; /&gt;
+&lt;jsp:setProperty name=&quot;cart&quot; property=&quot;*&quot; /&gt;
+&lt;%
+cart.processRequest(request);
+%&gt;
+&lt;FONT size = 5 COLOR=&quot;#CC0000&quot;&gt;
+&lt;br&gt; You have the following items in your cart:
+&lt;ol&gt;
+&lt;%
+String[] items = cart.getItems();
+for (int i=0; i&lt;items.length; i++) {
+%&gt;
+&lt;li&gt;&lt;% out.print(beans.HTMLFilter.filter(items[i])); %&gt;
+&lt;%
+}
+%&gt;
+&lt;/ol&gt;
+&lt;/FONT&gt;
+&lt;/html&gt;
 
-        <h3>Server.java</h3>
-<pre><code>import java.net.*;
-import java.io.*;
 
-public class Server {
-    private Socket socket = null;
-    private ServerSocket server = null;
-    private DataInputStream in = null;
+MyBean.java
 
-    public Server(int port) {
-        try {
-            server = new ServerSocket(port);
-            System.out.println("Server started");
-            System.out.println("Waiting for a client ...");
-
-            socket = server.accept();
-            System.out.println("Client accepted");
-
-            in = new DataInputStream(
-                new BufferedInputStream(socket.getInputStream()));
-
-            String line = "";
-
-            while(!line.equals("Over")) {
-                try {
-                    line = in.readUTF();
-                    System.out.println(line);
-                }
-                catch(IOException i) {
-                    System.out.println(i);
-                }
-            }
-
-            System.out.println("Closing connection");
-            socket.close();
-            in.close();
-        }
-        catch(IOException i) {
-            System.out.println(i);
-        }
-    }
-
-    public static void main(String args[]) {
-        Server server = new Server(5000);
-    }
-}</code></pre>
-    </section>
-
-    <section class="experiment" id="exp7">
-        <span class="number">Experiment 7</span>
-        <h2>Calculator</h2>
-<pre><code>import java.awt.*;
-import java.awt.event.*;
-import java.applet.*;
-
-public class calculator extends Applet
-        implements ActionListener {
-
-    String msg = "";
-    TextField t1, t2, t3;
-    Button b1, b2, b3, b4;
-    Label l1, l2, l3;
-
-    public void init() {
-        l1 = new Label("First Number");
-        add(l1);
-
-        t1 = new TextField(15);
-        add(t1);
-
-        l2 = new Label("Second Number");
-        add(l2);
-
-        t2 = new TextField(15);
-        add(t2);
-
-        l3 = new Label("Result");
-        add(l3);
-
-        t3 = new TextField(15);
-        add(t3);
-
-        b1 = new Button("ADD");
-        add(b1);
-        b1.addActionListener(this);
-
-        b2 = new Button("SUB");
-        add(b2);
-        b2.addActionListener(this);
-
-        b3 = new Button("MULT");
-        add(b3);
-        b3.addActionListener(this);
-
-        b4 = new Button("DIV");
-        add(b4);
-        b4.addActionListener(this);
-    }
-
-    public void actionPerformed(ActionEvent e) {
-
-        if(e.getSource() == b1) {
-            int x = Integer.parseInt(t1.getText());
-            int y = Integer.parseInt(t2.getText());
-            int sum = x + y;
-            t3.setText(" " + sum);
-        }
-
-        if(e.getSource() == b2) {
-            int x = Integer.parseInt(t1.getText());
-            int y = Integer.parseInt(t2.getText());
-            int sub = x - y;
-            t3.setText(" " + sub);
-        }
-
-        if(e.getSource() == b3) {
-            int x = Integer.parseInt(t1.getText());
-            int y = Integer.parseInt(t2.getText());
-            int mul = x * y;
-            t3.setText(" " + mul);
-        }
-
-        if(e.getSource() == b4) {
-            int x = Integer.parseInt(t1.getText());
-            int y = Integer.parseInt(t2.getText());
-            int div = x / y;
-            t3.setText(" " + div);
-        }
-
-        showStatus("text & button example");
-        repaint();
-    }
-}</code></pre>
-    </section>
-
-    <section class="experiment" id="exp8">
-        <span class="number">Experiment 8</span>
-        <h2>Socket Programming</h2>
-
-        <h3>AddClient.java</h3>
-<pre><code>import java.rmi.*;
-import java.net.*;
-import java.io.*;
+package beans;
+import java.beans.*;
+import javax.servlet.http.*;
+import javax.servlet.*;
+import java.text.DateFormat;
 import java.util.*;
 
-public class AddClient {
-    public static void main(String args[]) {
+public class MyBean {
+Vector v = new Vector();
+String submit = null;
+String item = null;
 
-        String host = "localhost";
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Enter the 1st parameter");
-        int a = sc.nextInt();
-
-        System.out.println("Enter the 2nd parameter");
-        int b = sc.nextInt();
-
-        try {
-            AddRem remobj =
-                (AddRem)Naming.lookup("rmi://" + host + "/AddRem");
-
-            System.out.println(remobj.addNum(a,b));
-        }
-        catch(RemoteException re) {
-            re.printStackTrace();
-        }
-        catch(NotBoundException nbe) {
-            nbe.printStackTrace();
-        }
-        catch(MalformedURLException nbe) {
-            nbe.printStackTrace();
-        }
-    }
+private void addItem(String name) { v.addElement(name); }
+private void removeItem(String name) { v.removeElement(name); }
+public void setItem(String name) { item = name; }
+public void setSubmit(String s) { submit = s; }
+public String[] getItems() {
+String[] s = new String[v.size()];
+v.copyInto(s);
+return s;
+}
+public void processRequest(HttpServletRequest request) {
+if (submit == null) addItem(item);
+if (submit.equals(&quot;add&quot;)) addItem(item);
+else if (submit.equals(&quot;remove&quot;)) removeItem(item);
+reset();
+}
+private void reset() { submit = null; item = null; }
 }</code></pre>
+    </div>
+    <div>
+      <h3>🖥️ Output</h3>
+      <div class="output">SHOPPING CART<br><br>Please enter item to add or remove:<br><br>Add Item: [ JSP Book ▼ ]<br><br>[ add ]  [ remove ]<br><br>You have the following items in your cart:<br>1. JSP Book</div>
+    </div>
+  </div>
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+</section>
+<section class="experiment" id="p7">
+  <div class="exp-head">
+    <span class="number">07</span>
+    <div><h2>7. Bio Data Preparation in JSP</h2><p>Home.jsp + Insert.jsp</p></div>
+  </div>
+  <div class="columns">
+    <div>
+      <h3>📄 Program Code</h3>
+      <pre><code>Home.jsp
 
-        <h3>AddRem.java</h3>
-<pre><code>import java.rmi.*;
+&lt;%@page contentType=&quot;text/html&quot; pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+&lt;title&gt;JSP Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;STUDENT DETAILS&lt;/h1&gt;
+&lt;form method=&quot;post&quot; action=&quot;insert.jsp&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Roll no : &lt;/td&gt;&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;roll&quot; /&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Name : &lt;/td&gt;&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;name&quot; /&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Father Name: &lt;/td&gt;&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;fname&quot; /&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Mother Name: &lt;/td&gt;&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;mname&quot; /&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Mobile no: &lt;/td&gt;&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;mblno&quot; /&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Address&lt;/td&gt;&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;adrs&quot; /&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
-public interface AddRem extends Remote {
-    public int addNum(int a, int b) throws RemoteException;
+
+Insert.jsp
+
+&lt;%@page contentType=&quot;text/html&quot; pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;%@page import=&quot;java.sql.*,java.util.*&quot;%&gt;
+&lt;% Class.forName(&quot;org.apache.derby.jdbc.ClientDriver&quot;);%&gt;
+&lt;%
+String sroll=request.getParameter(&quot;roll&quot;);
+String sname=request.getParameter(&quot;name&quot;);
+String sfname=request.getParameter(&quot;fname&quot;);
+String smname=request.getParameter(&quot;mname&quot;);
+String smblno=request.getParameter(&quot;mblno&quot;);
+String sadrs=request.getParameter(&quot;adrs&quot;);
+
+Connection con =
+DriverManager.getConnection(&quot;jdbc:derby://localhost:1527/sample&quot;,&quot;app&quot;,&quot;app&quot;);
+Statement st = con.createStatement();
+int i = st.executeUpdate(&quot;insert into STUDREC(ROLLNO,NAME,FNAME,MNAME,MBLNO,ADRS)values(&#x27;&quot;+sroll+&quot;&#x27;,&#x27;&quot;+sname+&quot;&#x27;,&#x27;&quot;+sfname+&quot;&#x27;,&#x27;&quot;+smname+&quot;&#x27;,&#x27;&quot;+smblno+&quot;&#x27;,&#x27;&quot;+sadrs+&quot;&#x27;)&quot;);
+out.println(&quot;inserted successfully&quot;);
+%&gt;</code></pre>
+    </div>
+    <div>
+      <h3>🖥️ Output</h3>
+      <div class="output">STUDENT DETAILS<br><br>Roll no : __________<br>Name : __________<br>Father Name: __________<br>Mother Name: __________<br>Mobile no: __________<br>Address __________<br><br>[ Submit ]<br><br>Output:<br>inserted successfully</div>
+    </div>
+  </div>
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+</section>
+<section class="experiment" id="p8">
+  <div class="exp-head">
+    <span class="number">08</span>
+    <div><h2>8. Response And Request in ASP</h2><p>login.aspx + Regform.aspx.cs</p></div>
+  </div>
+  <div class="columns">
+    <div>
+      <h3>📄 Program Code</h3>
+      <pre><code>login.aspx
+
+&lt;%@ Page Language=&quot;C#&quot; AutoEventWireup=&quot;true&quot; CodeBehind=&quot;login.aspx.cs&quot; Inherits=&quot;regform._Default&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head runat=&quot;server&quot;&gt;
+&lt;title&gt;Untitled Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form id=&quot;form1&quot; runat=&quot;server&quot;&gt;
+&lt;div&gt;
+SRegistration form&lt;br/&gt;&lt;br/&gt;
+Name :
+&lt;asp:TextBox ID=&quot;txtname&quot; runat=&quot;server&quot;&gt;&lt;/asp:TextBox&gt;
+&lt;br/&gt;&lt;br/&gt;
+user name :
+&lt;asp:TextBox ID=&quot;txtuser&quot; runat=&quot;server&quot;&gt;&lt;/asp:TextBox&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+Email :&amp;nbsp;
+&lt;asp:TextBox ID=&quot;txtemail&quot; runat=&quot;server&quot;&gt;&lt;/asp:TextBox&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;asp:Button ID=&quot;Btnreg&quot; runat=&quot;server&quot; PostBackUrl=&quot;~/welcome.aspx&quot; Text=&quot;Register&quot;/&gt;
+&lt;br/&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+Regform.aspx.cs
+
+using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+
+namespace regform
+{
+public partial class WebForm1 : System.Web.UI.Page
+{
+protected void Page_Load(object sender, EventArgs e)
+{
+string uname = Request.Form[&quot;txtname&quot;].ToString();
+string uid = Request.Form[&quot;txtuser&quot;].ToString();
+string uemail = Request.Form[&quot;txtemail&quot;].ToString();
+
+Response.Write(&quot;&lt;B&gt;welcome &quot; + uname);
+Response.Write(&quot;&lt;BR&gt; Your username is &quot; + uid + &quot; and email address is &quot; + uemail );
+}
+}
 }</code></pre>
+    </div>
+    <div>
+      <h3>🖥️ Output</h3>
+      <div class="output">Registration form<br><br>Name : __________________<br>user name : __________________<br>Email : __________________<br><br>[ Register ]<br><br>Output:<br>welcome Student<br>Your username is student01 and email address is student@example.com</div>
+    </div>
+  </div>
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+</section>
+<section class="experiment" id="p9">
+  <div class="exp-head">
+    <span class="number">09</span>
+    <div><h2>9. AdRotator Component in ASP</h2><p>ImageAd.aspx + XMLFileRotator.xml</p></div>
+  </div>
+  <div class="columns">
+    <div>
+      <h3>📄 Program Code</h3>
+      <pre><code>ImageAd.aspx
 
-        <h3>AddRemImpl.java</h3>
-<pre><code>import java.rmi.*;
-import java.rmi.server.UnicastRemoteObject;
+&lt;%@Page Language=&quot;C#&quot; AutoEventWireup=&quot;true&quot; CodeFile=&quot;Default2.aspx.cs&quot; Inherits=&quot;Default2&quot; %&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head runat=&quot;server&quot;&gt;
+&lt;title&gt;Untitled Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form id=&quot;form1&quot; runat=&quot;server&quot;&gt;
+&lt;div&gt;
+&lt;asp:AdRotator ID=&quot;AdRotator1&quot; runat=&quot;server&quot;/&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
-public class AddRemImpl extends UnicastRemoteObject
-        implements AddRem {
 
-    public AddRemImpl() throws RemoteException {
-    }
+XMLFileRotator.xml
 
-    public int addNum(int a, int b) {
-        return(a + b);
-    }
-}</code></pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;Advertisements&gt;
+&lt;Ad&gt;
+&lt;ImageUrl&gt;image1.jpg&lt;/ImageUrl&gt;
+&lt;AlternateText&gt;Image not displayed&lt;/AlternateText&gt;
+&lt;NavigationUrl&gt;&lt;/NavigationUrl&gt;
+&lt;/Ad&gt;
+&lt;Ad&gt;
+&lt;ImageUrl&gt;image2.jpg&lt;/ImageUrl&gt;
+&lt;AlternateText&gt;Image not displayed&lt;/AlternateText&gt;
+&lt;NavigationUrl&gt;&lt;/NavigationUrl&gt;
+&lt;/Ad&gt;
+&lt;/Advertisements&gt;</code></pre>
+    </div>
+    <div>
+      <h3>🖥️ Output</h3>
+      <div class="output">AdRotator Output<br><br>┌─────────────────────────────────────┐<br>│                                     │<br>│             image1.jpg              │<br>│                                     │<br>└─────────────────────────────────────┘<br><br>The next advertisement can use image2.jpg.<br><br>Note: The original output depends on the image files used by the ASP project.</div>
+    </div>
+  </div>
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+</section>
+<section class="experiment" id="p10">
+  <div class="exp-head">
+    <span class="number">10</span>
+    <div><h2>10. Student Database in ASP</h2><p>Default.aspx + Default.aspx.cs + update.aspx + SQL Query</p></div>
+  </div>
+  <div class="columns">
+    <div>
+      <h3>📄 Program Code</h3>
+      <pre><code>Default.aspx
 
-        <h3>AddServer.java</h3>
-<pre><code>import java.rmi.*;
-import java.net.*;
+&lt;%@Page Language=&quot;C#&quot; AutoEventWireup=&quot;true&quot; CodeBehind=&quot;Default.aspx.cs&quot; Inherits=&quot;student_record._Default&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head runat=&quot;server&quot;&gt;
+&lt;title&gt;Untitled Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form id=&quot;form1&quot; runat=&quot;server&quot;&gt;
+&lt;div&gt;
+Student record&lt;br/&gt;&lt;br/&gt;
+&lt;asp:Label ID=&quot;lblroll&quot; runat=&quot;server&quot; Text=&quot;Rollno&quot;&gt;&lt;/asp:Label&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&lt;asp:TextBox ID=&quot;txtroll&quot; runat=&quot;server&quot;&gt;&lt;/asp:TextBox&gt;
+&lt;br/&gt;&lt;br/&gt;
+&lt;asp:Label ID=&quot;lblname&quot; runat=&quot;server&quot; Text=&quot;Name&quot;&gt;&lt;/asp:Label&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&lt;asp:TextBox ID=&quot;txtname&quot; runat=&quot;server&quot;&gt;&lt;/asp:TextBox&gt;
+&lt;br/&gt;&lt;br/&gt;
+&lt;asp:Label ID=&quot;lblclass&quot; runat=&quot;server&quot; Text=&quot;Class&quot;&gt;&lt;/asp:Label&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&lt;asp:TextBox ID=&quot;txtclass&quot; runat=&quot;server&quot;&gt;&lt;/asp:TextBox&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;asp:Label ID=&quot;lbldepart&quot; runat=&quot;server&quot; Text=&quot;Depart&quot;&gt;&lt;/asp:Label&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&lt;asp:TextBox ID=&quot;txtdepart&quot; runat=&quot;server&quot;&gt;&lt;/asp:TextBox&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;asp:Button ID=&quot;btninsert&quot; runat=&quot;server&quot; onclick=&quot;btninsert_Click&quot; Text=&quot;Insert&quot;/&gt;
+&amp;nbsp;
+&lt;asp:Button ID=&quot;btnview&quot; runat=&quot;server&quot; PostBackUrl=&quot;~/update.aspx&quot; Text=&quot;View&quot;/&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
-public class AddServer {
-    public static void main(String args[]) {
-        try {
-            AddRemImpl locobj = new AddRemImpl();
-            Naming.rebind("rmi:///AddRem", locobj);
-        }
-        catch(RemoteException re) {
-            re.printStackTrace();
-        }
-        catch(MalformedURLException mfe) {
-            mfe.printStackTrace();
-        }
-    }
-}</code></pre>
-    </section>
 
+Default.aspx.cs
+
+using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+using System.Data.SqlClient;
+
+namespace student_record
+{
+public partial class _Default : System.Web.UI.Page
+{
+SqlConnection cn;
+SqlCommand cmd;
+string str, qry;
+
+protected void Page_Load(object sender, EventArgs e)
+{
+str = @&quot;Data Source=GFSYS-21\SQLEXPRESS;Initial Catalog=record;Integrated Security=True&quot;;
+cn = new SqlConnection(str);
+cn.Open();
+}
+protected void btninsert_Click(object sender, EventArgs e)
+{
+qry = &quot;insert into stud values(&#x27;&quot; + txtroll.Text + &quot;&#x27;,&#x27;&quot; + txtname.Text + &quot;&#x27;,&#x27;&quot; + txtclass.Text + &quot;&#x27;,&#x27;&quot; + txtdepart.Text + &quot;&#x27;)&quot;;
+Response.Write(&quot;&lt;script&gt;alert(&#x27;Data insert sucessfully&#x27;)&lt;/script&gt;&quot;);
+cmd = new SqlCommand(qry, cn);
+cmd.ExecuteNonQuery();
+txtname.Text = &quot;&quot;;
+txtroll.Text = &quot;&quot;;
+txtclass.Text = &quot;&quot;;
+txtdepart.Text = &quot;&quot;;
+}
+}
+}
+
+
+update.aspx
+
+&lt;%@Page Language=&quot;C#&quot; AutoEventWireup=&quot;true&quot; CodeBehind=&quot;update.aspx.cs&quot; Inherits=&quot;student_record.update&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head runat=&quot;server&quot;&gt;
+&lt;title&gt;Untitled Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form id=&quot;form1&quot; runat=&quot;server&quot;&gt;
+&lt;div&gt;
+&lt;asp:GridView ID=&quot;GridView1&quot; runat=&quot;server&quot; AutoGenerateColumns=&quot;False&quot;
+DataSourceID=&quot;SqlDataSource1&quot;&gt;
+&lt;Columns&gt;
+&lt;asp:BoundField DataField=&quot;rollno&quot; HeaderText=&quot;rollno&quot; SortExpression=&quot;rollno&quot;/&gt;
+&lt;asp:BoundField DataField=&quot;name&quot; HeaderText=&quot;name&quot; SortExpression=&quot;name&quot;/&gt;
+&lt;asp:BoundField DataField=&quot;class&quot; HeaderText=&quot;class&quot; SortExpression=&quot;class&quot;/&gt;
+&lt;asp:BoundField DataField=&quot;dept&quot; HeaderText=&quot;dept&quot; SortExpression=&quot;dept&quot;/&gt;
+&lt;/Columns&gt;
+&lt;/asp:GridView&gt;
+&lt;asp:SqlDataSource ID=&quot;SqlDataSource1&quot; runat=&quot;server&quot;
+ConnectionString=&quot;&lt;%$ ConnectionStrings:recordConnectionString4 %&gt;&quot;
+SelectCommand=&quot;SELECT [rollno], [name], [class], [dept] FROM [stud]&quot;&gt;
+&lt;/asp:SqlDataSource&gt;
+&lt;br/&gt;&lt;br/&gt;
+&lt;asp:Button ID=&quot;btnback&quot; runat=&quot;server&quot; PostBackUrl=&quot;~/Default.aspx&quot; Text=&quot;Back&quot;/&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+SQL QUERY:
+
+createdatabase record;
+use record;
+createtable stud(rollno varchar(10),name varchar(30),class varchar(20),dept varchar(20));
+select * from stud;</code></pre>
+    </div>
+    <div>
+      <h3>🖥️ Output</h3>
+      <div class="output">Student record<br><br>Rollno: __________<br>Name: __________<br>Class: __________<br>Depart: __________<br><br>[ Insert ]   [ View ]<br><br>After inserting, the program displays:<br>Data insert sucessfully<br><br>View output:<br>┌────────┬────────────┬─────────┬────────────┐<br>│ rollno │ name       │ class   │ dept       │<br>├────────┼────────────┼─────────┼────────────┤<br>│ 101    │ Student    │ II MCA  │ Computer   │<br>└────────┴────────────┴─────────┴────────────┘<br><br>SQL database:<br>record<br>  └── stud(rollno, name, class, dept)</div>
+    </div>
+  </div>
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+</section>
 </main>
-
-<footer>
-    <p>Java Lab Experiments | HTML Presentation Website</p>
-    <a class="top" href="#top">↑ Back to Top</a>
-</footer>
-
+<footer>Advanced Web Technology Lab • Programs &amp; Output</footer>
 </body>
 </html>
