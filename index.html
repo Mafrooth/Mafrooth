@@ -1,91 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BRIXON BUILDERS — premium residential construction, architectural planning, luxury villas, interiors and renovation.">
-  <title>BRIXON BUILDERS | Build Your Vision</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Brixon Builders — residential construction, architectural planning, interiors and turnkey home building in Tamil Nadu.">
+<title>Brixon Builders | Build Your Dream Home</title>
+<style>
+:root{--gold:#dcae32;--gold2:#f0c64d;--black:#101010;--ink:#171717;--muted:#686868;--paper:#f7f7f7;--white:#fff;--max:1240px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff;line-height:1.55}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}.container{width:min(var(--max),92%);margin:auto}
+header{height:104px;background:var(--black);color:#fff;position:sticky;top:0;z-index:20;border-bottom:1px solid #292929}.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:25px}.brand img{width:135px;height:90px;object-fit:contain;display:block}.navlinks{display:flex;align-items:center;gap:30px;font-weight:700}.navlinks a{transition:color .2s}.navlinks a:hover,.navlinks a.active{color:var(--gold2)}.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--gold);color:#111;border:0;border-radius:7px;padding:14px 24px;font-weight:800;cursor:pointer;transition:transform .2s,background .2s}.btn:hover{background:var(--gold2);transform:translateY(-2px)}.btn.outline{background:transparent;border:2px solid #fff;color:#fff}.menu-toggle{display:none;background:transparent;border:1px solid #555;color:#fff;border-radius:6px;padding:8px 12px;font-size:22px}
+.hero{background:#111;color:#fff;min-height:560px;position:relative;isolation:isolate;display:flex;align-items:center;overflow:hidden}.hero:before{content:"";position:absolute;inset:0;z-index:-2;background:url('assets/hero-home.jpg') center 48%/cover no-repeat}.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(0,0,0,.97) 0%,rgba(0,0,0,.85) 32%,rgba(0,0,0,.3) 65%,rgba(0,0,0,.05) 100%)}.hero-content{max-width:660px;padding:70px 0}.eyebrow{color:var(--gold2);font-weight:800;letter-spacing:.06em;text-transform:uppercase}.hero h1{font-size:clamp(2.7rem,5.5vw,5rem);line-height:.99;letter-spacing:-.035em;margin:14px 0 18px;text-transform:uppercase}.hero h2{font-size:clamp(1.25rem,2.3vw,2rem);color:var(--gold2);margin:0 0 18px}.hero p{font-size:1.1rem;max-width:530px;color:#f1f1f1}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.trust{background:#111;color:#fff;padding:25px 0 34px}.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:850px;margin:auto}.trust-item{border:1px solid var(--gold);border-radius:10px;text-align:center;padding:18px 14px;font-weight:700}.trust-item .symbol{display:block;color:var(--gold2);font-size:1.7rem;margin-bottom:4px}
+section{padding:78px 0}.section-head{text-align:center;margin-bottom:38px}.section-head h2{font-size:clamp(2rem,4vw,3.3rem);line-height:1.1;margin:0 0 10px;text-transform:uppercase;color:#101010}.section-head p{font-size:1.25rem;color:#b58a20;font-weight:700;margin:0}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}.about-panel{background:#111;color:#fff;padding:38px;border-radius:12px}.about-panel h3{font-size:1.8rem;margin:0 0 14px}.gold{color:var(--gold2)}.check-list{padding:0;list-style:none}.check-list li{margin:12px 0}.check-list li:before{content:"✓";color:var(--gold);font-weight:900;margin-right:10px}.services{background:#f6f6f6}.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}.service-card{background:#fff;border-radius:9px;padding:28px 20px;text-align:center;box-shadow:0 8px 18px #00000012;transition:transform .2s}.service-card:hover{transform:translateY(-5px)}.service-icon{font-size:3.1rem;color:var(--gold);line-height:1.2}.service-card h3{font-size:1.2rem;margin:16px 0 6px}.service-card p{margin:0;color:#444}
+.packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:stretch}.package{background:#fff;border:1px solid #eee;border-radius:6px;padding:30px 28px;box-shadow:0 10px 28px #00000012;position:relative}.package.featured{background:#101010;color:#fff;border:4px solid var(--gold);transform:translateY(-8px)}.popular{position:absolute;top:-22px;left:50%;transform:translateX(-50%);background:var(--gold);color:#111;border-radius:30px;padding:7px 22px;font-weight:900;white-space:nowrap}.package h3{text-align:center;text-transform:uppercase;font-size:1.7rem;margin:10px 0}.price{text-align:center;color:#b98d1e;font-weight:900;font-size:clamp(1.7rem,2.5vw,2.4rem);margin:0 0 20px;white-space:nowrap}.package ul{padding-left:19px;min-height:132px}.package li{margin:9px 0}.package .btn{width:100%;margin-top:14px}.fineprint{text-align:center;color:#555;margin:32px 0 0}
+.projects{background:#f8f8f8}.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}.project-card{overflow:hidden;border-radius:13px;background:#111;box-shadow:0 8px 18px #00000016}.project-card img{display:block;width:100%;aspect-ratio:1.7;object-fit:cover;transition:transform .35s}.project-card:hover img{transform:scale(1.04)}.project-caption{padding:13px 15px;color:#f4cd64;text-align:center;font-weight:800}
+.contact{background:#101010;color:#fff}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}.contact h2{font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.05;margin:0 0 18px}.contact-sub{color:var(--gold2);font-size:1.4rem;font-weight:800}.contact-info{margin-top:32px;display:grid;gap:18px}.info-row{display:flex;gap:16px;align-items:flex-start}.info-icon{font-size:1.7rem;color:var(--gold2);width:34px}.info-row strong{display:block;font-size:1.1rem}.quote-form{background:#fff;color:#111;border-radius:15px;padding:34px;box-shadow:0 18px 50px #00000030}.quote-form h3{font-size:2rem;margin:0 0 20px}.field{margin-bottom:14px}.field label{display:block;font-weight:800;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;padding:13px 14px;border:1px solid #ccc;border-radius:5px;background:#f8f8f8}.field textarea{min-height:90px;resize:vertical}.quote-form .btn{width:100%;padding:16px}.form-note{font-size:.9rem;color:#555;margin:12px 0 0}
+footer{background:#090909;color:#d9bd6b;text-align:center;padding:24px 15px;border-top:1px solid #282828}footer strong{color:var(--gold2)}
+@media(max-width:950px){.navlinks{gap:16px}.navlinks .btn{padding:11px 14px}.brand img{width:112px}.service-grid{grid-template-columns:repeat(2,1fr)}.packages-grid{gap:15px}.package{padding:25px 18px}.project-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){header{height:82px}.brand img{height:74px;width:105px}.menu-toggle{display:block}.nav{gap:10px}.navlinks{display:none;position:absolute;top:81px;left:0;right:0;background:#111;padding:18px 5% 24px;flex-direction:column;align-items:stretch;gap:0;border-top:1px solid #333}.navlinks.open{display:flex}.navlinks a{padding:12px 0;border-bottom:1px solid #292929}.navlinks .btn{margin-top:15px}.hero{min-height:570px}.hero:before{background-position:58% center}.hero:after{background:linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.64))}.hero-content{padding:55px 0}.trust-grid{grid-template-columns:1fr;gap:12px;max-width:400px}section{padding:58px 0}.about-grid,.contact-grid{grid-template-columns:1fr;gap:28px}.service-grid{gap:14px}.service-card{padding:22px 12px}.packages-grid{grid-template-columns:1fr;gap:32px}.package.featured{transform:none;margin-top:12px}.package ul{min-height:0}.project-grid{grid-template-columns:1fr}.quote-form{padding:25px 20px}.contact-grid{gap:36px}}
+@media(max-width:400px){.service-grid{grid-template-columns:1fr}.actions .btn{width:100%}.hero h1{font-size:2.55rem}}
+</style>
 </head>
 <body>
-  <div class="announcement"><span>CRAFTING SPACES. BUILDING TRUST.</span><a href="#contact">Discuss your project <span aria-hidden="true">↗</span></a></div>
-  <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="Brixon Builders home"><span class="brand-mark">B<span>+</span></span><span class="brand-name">BRIXON <b>BUILDERS</b><small>DESIGN · BUILD · DELIVER</small></span></a>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home" aria-label="Brixon Builders home"><img src="assets/b-logo.png" alt="Brixon Builders logo"></a>
     <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-    <nav class="nav-links" aria-label="Main navigation">
-      <a href="#about">About</a><a href="#services">Services</a><a href="#packages">Packages</a><a href="#specifications">Specifications</a><a href="#contact" class="nav-cta">Let's talk <span>↗</span></a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#packages">Packages</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+      <a class="btn" href="#contact">GET FREE QUOTE</a>
     </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="hero-image hero-image-one"></div><div class="hero-image hero-image-two"></div>
-      <div class="hero-image hero-image-three"></div><div class="hero-image hero-image-four"></div>
-      <div class="hero-shade"></div>
-      <div class="hero-content">
-        <p class="eyebrow light"><span></span> RESIDENTIAL CONSTRUCTION & DESIGN</p>
-        <h1>BRIXON<br><em>BUILDERS</em></h1>
-        <p class="hero-copy">Thoughtful design. Trusted craftsmanship. Built around the way you live.</p>
-        <div class="hero-actions"><a class="button button-light" href="#packages">Explore packages <span>↘</span></a><a class="text-link light-link" href="#about">Discover Brixon <span>↗</span></a></div>
-        <div class="hero-foot"><span>01 — 04</span><span>BUILT WITH PURPOSE</span><span>INDIVIDUAL HOMES · VILLAS · DUPLEX</span></div>
-      </div>
-      <div class="hero-vertical">BRIXON BUILDERS — PORTFOLIO</div>
-    </section>
-
-    <section class="intro section-pad" id="about">
-      <div class="section-label"><span>01</span> WHO WE ARE</div>
-      <div class="intro-main"><p class="eyebrow">A BETTER WAY TO BUILD</p><h2>Good buildings begin<br>with <em>good people.</em></h2></div>
-      <div class="intro-side"><p>Brixon Builders specializes in premium residential construction with a commitment to quality workmanship, transparent pricing, and customer satisfaction.</p><a class="text-link" href="#contact">Let's build something meaningful <span>↗</span></a></div>
-      <div class="value-strip"><div><strong>01</strong><span>Premium quality<br>materials</span></div><div><strong>02</strong><span>Experienced<br>engineers</span></div><div><strong>03</strong><span>Transparent<br>pricing</span></div><div><strong>04</strong><span>Structural<br>safety</span></div><div><strong>05</strong><span>On-time project<br>delivery</span></div><div><strong>06</strong><span>Weekly site<br>updates</span></div><div><strong>07</strong><span>Dedicated site<br>supervision</span></div></div>
-    </section>
-
-    <section class="services section-pad" id="services">
-      <div class="section-top"><div><div class="section-label"><span>02</span> WHAT WE DO</div><h2>From first sketch<br>to <em>final handover.</em></h2></div><p>One committed team for the details that make a house yours.</p></div>
-      <div class="service-grid">
-        <article class="service-card service-feature"><div class="service-number">01 / RESIDENTIAL</div><div class="service-symbol">⌂</div><h3>Individual house</h3><p>Personal homes planned around your lifestyle and needs.</p></article>
-        <article class="service-card"><div class="service-number">02 / PREMIUM</div><div class="service-symbol">◇</div><h3>Luxury villa</h3><p>Distinctive homes with refined spaces and finishes.</p></article>
-        <article class="service-card"><div class="service-number">03 / RESIDENTIAL</div><div class="service-symbol">▤</div><h3>Duplex homes</h3><p>Practical multi-level living with considered layouts.</p></article>
-        <article class="service-card"><div class="service-number">04 / BUILD</div><div class="service-symbol">⌁</div><h3>Turnkey construction</h3><p>A coordinated journey from planning through delivery.</p></article>
-        <article class="service-card"><div class="service-number">05 / DESIGN</div><div class="service-symbol">✳</div><h3>Architectural planning</h3><p>Functional floor plans shaped around your priorities.</p></article>
-        <article class="service-card"><div class="service-number">06 / VISUALISE</div><div class="service-symbol">▧</div><h3>3D elevation design</h3><p>See the character of your home before it is built.</p></article>
-        <article class="service-card"><div class="service-number">07 / FINISH</div><div class="service-symbol">◫</div><h3>Interior works</h3><p>Interior details that bring warmth and purpose.</p></article>
-        <article class="service-card"><div class="service-number">08 / RENEW</div><div class="service-symbol">↗</div><h3>Renovation & remodeling</h3><p>Give existing spaces a considered new chapter.</p></article>
-      </div>
-    </section>
-
-    <section class="packages section-pad" id="packages">
-      <div class="section-top"><div><div class="section-label"><span>03</span> CONSTRUCTION PACKAGES</div><h2>Three ways to<br><em>build with confidence.</em></h2></div><p>Choose the package that matches your project priorities. Tap a plan to see its inclusions.</p></div>
-      <div class="package-grid">
-        <article class="package-card" data-package="classic"><div class="package-top"><span class="package-tag">ESSENTIAL</span><span class="package-index">01</span></div><h3>Classic</h3><div class="package-price">1899 <small>as listed in portfolio</small></div><p class="package-summary">The essentials for a comfortable, well-planned home.</p><ul><li>2D Floor Plan</li><li>3D Front Elevation</li><li>Basic Structural Drawing</li></ul><button class="package-button" data-select="classic">View specifications <span>↗</span></button></article>
-        <article class="package-card package-card-featured" data-package="premium"><div class="featured-ribbon">POPULAR CHOICE</div><div class="package-top"><span class="package-tag">ENHANCED</span><span class="package-index">02</span></div><h3>Premium</h3><div class="package-price">1999 <small>as listed in portfolio</small></div><p class="package-summary">More design detail and upgraded everyday provisions.</p><ul><li>2D Floor Plan</li><li>3D Elevation (Standard)</li><li>Structural Drawing</li><li>Electrical & plumbing layouts</li></ul><button class="package-button" data-select="premium">View specifications <span>↗</span></button></article>
-        <article class="package-card" data-package="elite"><div class="package-top"><span class="package-tag">SIGNATURE</span><span class="package-index">03</span></div><h3>Elite</h3><div class="package-price">2199 <small>as listed in portfolio</small></div><p class="package-summary">Expanded provisions and premium finishing selections.</p><ul><li>2D Floor Plan</li><li>3D Elevation (Premium)</li><li>Structural drawing</li><li>Electrical & plumbing layouts</li><li>Soil test report</li></ul><button class="package-button" data-select="elite">View specifications <span>↗</span></button></article>
-      </div>
-      <p class="package-note">Package figures are reproduced from the supplied portfolio. The PDF does not state a unit or clarify whether these figures are per sq. ft.; confirm pricing and scope with Brixon Builders before committing.</p>
-    </section>
-
-    <section class="specifications section-pad" id="specifications">
-      <div class="section-top"><div><div class="section-label"><span>04</span> PACKAGE SPECIFICATIONS</div><h2>Details matter.<br><em>Every layer counts.</em></h2></div><p>Explore the specifications listed in the supplied portfolio for Classic, Premium and Elite.</p></div>
-      <div class="spec-layout">
-        <aside class="spec-sidebar"><p class="eyebrow">SELECT A PACKAGE</p><button class="spec-tab active" data-tab="classic">01 <span>Classic</span><b>↗</b></button><button class="spec-tab" data-tab="premium">02 <span>Premium</span><b>↗</b></button><button class="spec-tab" data-tab="elite">03 <span>Elite</span><b>↗</b></button><div class="spec-help"><span>NEED A HAND?</span><p>Not sure which package fits your home?</p><a href="#contact">Talk to our team ↗</a></div></aside>
-        <div class="spec-content" id="spec-content" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <section class="process section-pad">
-      <div class="section-label"><span>05</span> THE BRIXON APPROACH</div><div class="process-head"><h2>Clear steps.<br><em>Careful execution.</em></h2><p>We believe a better building experience comes from clear communication and consistent site supervision.</p></div>
-      <div class="process-grid"><div><span>01</span><h3>Understand</h3><p>Discuss your needs, priorities and project expectations.</p></div><div><span>02</span><h3>Plan</h3><p>Develop the design and align the scope of work.</p></div><div><span>03</span><h3>Build</h3><p>Coordinate the work with a focus on quality and safety.</p></div><div><span>04</span><h3>Deliver</h3><p>Keep you informed with regular updates through the project.</p></div></div>
-    </section>
-
-    <section class="contact section-pad" id="contact">
-      <div class="contact-copy"><div class="section-label light-label"><span>06</span> START A CONVERSATION</div><h2>Let's build your<br><em>next chapter.</em></h2><p>Have a plot, a plan or just an idea? Get in touch with BRIXON BUILDERS to discuss your project.</p><div class="contact-details"><a href="tel:9344299347"><span>PHONE 01</span>93442 99347 ↗</a><a href="tel:6374812046"><span>PHONE 02</span>63748 12046 ↗</a><a href="mailto:brixonn74@gmail.com"><span>EMAIL</span>brixonn74@gmail.com ↗</a></div></div>
-      <div class="contact-form-wrap"><form id="enquiry-form"><p class="eyebrow">PROJECT ENQUIRY</p><h3>Tell us what you're planning.</h3><label for="name">Your name</label><input id="name" name="name" placeholder="Enter your name" required><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" placeholder="Enter your phone number" required><label for="project">Project type</label><select id="project" name="project"><option>Individual house</option><option>Luxury villa</option><option>Duplex home</option><option>Turnkey construction</option><option>Architectural planning</option><option>Interior works</option><option>Renovation & remodeling</option></select><label for="message">Project details</label><textarea id="message" name="message" rows="3" placeholder="Tell us a little about your project"></textarea><button class="button button-dark" type="submit">Prepare enquiry <span>↗</span></button><p class="form-note">This form opens your email app with your enquiry prepared; it does not send automatically.</p></form></div>
-    </section>
-  </main>
-
-  <footer class="footer"><a class="brand footer-brand" href="#top"><span class="brand-mark">B<span>+</span></span><span class="brand-name">BRIXON <b>BUILDERS</b><small>DESIGN · BUILD · DELIVER</small></span></a><p>Built on trust. Designed for living.</p><a href="#top" class="back-top">BACK TO TOP ↑</a><div class="footer-bottom"><span>© <span id="year"></span> BRIXON BUILDERS</span><span>RESIDENTIAL CONSTRUCTION & DESIGN</span><span>KINDLY CONFIRM PACKAGE TERMS DIRECTLY</span></div></footer>
-  <script src="script.js"></script>
+  </div>
+</header>
+<main>
+<section class="hero" id="home"><div class="container"><div class="hero-content">
+  <img src="assets/b-logo.png" alt="b" height="250px" width="300px">
+  <div class="eyebrow">Brixon Builders · Tamil Nadu</div>
+  <h1>We Build Your<br>Dream Home</h1>
+  <h2>Strong. Beautiful. On Time.</h2>
+  <p>Premium residential construction with transparent pricing, quality materials and weekly site updates.</p>
+  <div class="actions"><a class="btn" href="#contact">GET FREE QUOTE</a><a class="btn outline" href="#packages">VIEW PACKAGES · ₹1,999 ONWARDS</a></div>
+</div></div></section>
+<div class="trust"><div class="container trust-grid">
+  <div class="trust-item"><span class="symbol">✓</span>100% Transparent Pricing</div><div class="trust-item"><span class="symbol">⌂</span>Experienced Engineers</div><div class="trust-item"><span class="symbol">▦</span>On-Time Delivery</div>
+</div></div>
+<section id="about"><div class="container about-grid">
+  <div><div class="eyebrow">Welcome to Brixon Builders</div><h2 style="font-size:clamp(2rem,4vw,3rem);line-height:1.1">Building trust, one home at a time.</h2><p>From the first floor plan to the final finishing touches, we help turn your vision into a home that feels truly yours. Our team focuses on thoughtful planning, dependable materials and clear communication throughout the build.</p><p>Whether you're planning an individual house, a duplex or a luxury villa, we make the process easier to understand from day one.</p><a class="btn" href="#contact">TALK TO OUR TEAM</a></div>
+  <div class="about-panel"><h3>Why choose <span class="gold">Brixon?</span></h3><ul class="check-list"><li>Clear, package-based pricing</li><li>Planning and elevation support</li><li>Quality-focused construction</li><li>Regular project progress updates</li><li>Solutions tailored to your budget</li></ul></div>
+</div></section>
+<section class="services" id="services"><div class="container"><div class="section-head"><h2>Our Services</h2><p>Everything You Need To Build Your Dream Home</p></div>
+<div class="service-grid">
+  <article class="service-card"><div class="service-icon">⌂</div><h3>Individual House</h3><p>Your dream home on your land.</p></article>
+  <article class="service-card"><div class="service-icon">♜</div><h3>Luxury Villa</h3><p>Premium villas with modern design.</p></article>
+  <article class="service-card"><div class="service-icon">▥</div><h3>Duplex Homes</h3><p>Stylish duplex homes for your family.</p></article>
+  <article class="service-card"><div class="service-icon">⚿</div><h3>Turnkey Construction</h3><p>Plan-to-key full responsibility.</p></article>
+  <article class="service-card"><div class="service-icon">▦</div><h3>Architectural Planning</h3><p>2D floor plans and 3D elevations.</p></article>
+  <article class="service-card"><div class="service-icon">▤</div><h3>3D Elevation Design</h3><p>See your home before we build.</p></article>
+  <article class="service-card"><div class="service-icon">▱</div><h3>Interior Works</h3><p>Kitchen, bedroom and living interiors.</p></article>
+  <article class="service-card"><div class="service-icon">⚒</div><h3>Renovation & Remodeling</h3><p>Give your existing home a fresh start.</p></article>
+</div><div style="text-align:center;margin-top:32px"><a class="btn" href="#contact">GET FREE CONSULTATION</a></div></div></section>
+<section id="packages"><div class="container"><div class="section-head"><h2>Choose Your Perfect Package</h2><p>Per Sq.Ft Rate · Transparent & All Inclusive</p></div>
+<div class="packages-grid">
+  <article class="package"><h3>Classic</h3><div class="price">₹1,999 / sqft</div><ul><li>2D floor plan </li><li>3D front elevation</li><li>Basic Structural Drawing</li></ul><a class="btn" href="#contact" data-package="Classic">GET THIS PACKAGE</a></article>
+  <article class="package featured"><div class="popular">MOST POPULAR</div><h3 class="gold">Premium</h3><div class="price">₹2,299 / sqft</div><ul><li>2D Floor plan</li><li>3D Elevation(Standard)</li> <li>Structural Drawing</li><li>Electrical Layout</li><li>Plumbing Layout</li></ul><a class="btn" href="#contact" data-package="Premium">GET THIS PACKAGE</a></article>
+  <article class="package"><h3>Elite</h3><div class="price">₹2,499 / sqft</div><ul><li>2D Floor Plan</li><li>Premium 3D elevation</li><li>Electrical + Plumbing Layout</li><li>Structural Drawing</li><li>Soil Test Report</li></ul><a class="btn" href="#contact" data-package="Elite">GET THIS PACKAGE</a></article>
+</div><p class="fineprint">Price may vary based on site location and soil condition.<br>Contact us for a free site visit.</p></div></section>
+<section class="projects" id="projects"><div class="container"><div class="section-head"><h2>Our Projects</h2><p>Homes We Built With Pride</p></div>
+<div class="project-grid">
+  <article class="project-card"><img src="./assets/project-1.jpg" alt="Modern villa project"><div class="project-caption">Project 1 · Modern Villa, Palakkodu</div></article>
+  <article class="project-card"><img src="assets/project-2.jpg" alt="Contemporary duplex home"><div class="project-caption">Project 2 · Duplex Home, Dharmapuri</div></article>
+  <article class="project-card"><img src="assets/project-3.jpg" alt="Luxury villa project"><div class="project-caption">Project 3 · Luxury Villa, Salem</div></article>
+  <article class="project-card"><img src="assets/project-4.jpg" alt="Individual house project"><div class="project-caption">Project 4 · Individual House, Hosur</div></article>
+  <article class="project-card"><img src="assets/project-5.jpg" alt="Contemporary villa project"><div class="project-caption">Project 5 · Contemporary Villa, Krishnagiri</div></article>
+  <article class="project-card"><img src="assets/project-6.jpg" alt="Family home project"><div class="project-caption">Project 6 · Family Home, Dharmapuri</div></article>
+</div><div style="text-align:center;margin-top:34px"><a class="btn" href="#contact">START YOUR PROJECT</a></div></div></section>
+<section class="contact" id="contact"><div class="container contact-grid">
+  <div><div class="eyebrow">Let's get started</div><h2>Let's Build Your<br><span class="gold">Dream Home</span><br>Together</h2><div class="contact-sub">Free Site Visit & Free Quotation</div>
+    <div class="contact-info">
+      <div class="info-row"><div class="info-icon">☎</div><div><strong>Phone</strong><a href="tel:+916374812046">63748 12046</a>, <a href="tel:+919344299347">93442 99347</a></div></div>
+      <div class="info-row"><div class="info-icon">✉</div><div><strong>Email</strong><a href="mailto:brixonn74@gmail.com">brixonn74@gmail.com</a></div></div>
+      <div class="info-row"><div class="info-icon">⌖</div><div><strong>Address</strong>A-17, Thiru Vi Ka Industrial Estate,<br> SIDCO Industrial Estate, Guindy, Chennai,<br> Tamil Nadu-600032</div></div>
+    </div>
+  </div>
+  <form class="quote-form" id="quoteForm"><h3>Get Free Quote</h3>
+    <div class="field"><label for="name">Your Name</label><input id="name" name="name" placeholder="Enter your name" required></div>
+    <div class="field"><label for="phone">Phone Number</label><input id="phone" name="phone" type="tel" placeholder="Enter your phone number" required></div>
+    <div class="field"><label for="plot">Plot Size</label><input id="plot" name="plot" placeholder="e.g. 1200 sqft" required></div>
+    <div class="field"><label for="package">Select Package</label><select id="package" name="package" required><option value="">Choose a package</option><option>Classic</option><option>Premium</option><option>Elite</option><option>Not sure yet</option></select></div>
+    <div class="field"><label for="message">Project details (optional)</label><textarea id="message" name="message" placeholder="Tell us a little about your dream home"></textarea></div>
+    <button class="btn" type="submit">REQUEST FREE QUOTE</button><p class="form-note">This opens your email app with your enquiry ready to send.</p>
+  </form>
+</div></section>
+</main>
+<footer><strong>BRIXON BUILDERS</strong> © <span id="year">2026</span> All Rights Reserved</footer>
+<script>
+const toggle=document.querySelector('.menu-toggle'), nav=document.querySelector('.navlinks');
+toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');}));
+document.querySelectorAll('[data-package]').forEach(b=>b.addEventListener('click',()=>{document.querySelector('#package').value=b.dataset.package;}));
+document.querySelector('#year').textContent=new Date().getFullYear();
+document.querySelector('#quoteForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);const subject=encodeURIComponent('Free construction quote request - '+f.get('name'));const body=encodeURIComponent('Name: '+f.get('name')+'\\nPhone: '+f.get('phone')+'\\nPlot size: '+f.get('plot')+'\\nPackage: '+f.get('package')+'\\nProject details: '+(f.get('message')||'Not provided'));window.location.href='mailto:brixonn74@gmail.com?subject='+subject+'&body='+body;});
+</script>
 </body>
 </html>
