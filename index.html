@@ -99,7 +99,7 @@ toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');tog
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');}));
 document.querySelectorAll('[data-package]').forEach(b=>b.addEventListener('click',()=>{document.querySelector('#package').value=b.dataset.package;}));
 document.querySelector('#year').textContent=new Date().getFullYear();
-document.querySelector('#quoteForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);const subject=encodeURIComponent('Free construction quote request - '+f.get('name'));const body=encodeURIComponent('Name: '+f.get('name')+'\\nPhone: '+f.get('phone')+'\\nPlot size: '+f.get('plot')+'\\nPackage: '+f.get('package')+'\\nProject details: '+(f.get('message')||'Not provided'));window.location.href='mailto:brixonn74@gmail.com?subject='+subject+'&body='+body;});
+document.querySelector('#quoteForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);const subject=encodeURIComponent('Free construction quote request - '+f.get('name'));const body=encodeURIComponent('Name: '+f.get('name')+'\\nPhone: '+f.get('phone')+'\\nPlot size: '+f.get('plot')+'\\nPackage: '+f.get('package')+'\\nProject details: '+(f.get('message')||'Not provided'));window.location.href='mailto:brixon74@gmail.com?subject='+subject+'&body='+body;});
 </script>
 </body>
 </html>
